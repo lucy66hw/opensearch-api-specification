@@ -1,8 +1,7 @@
 name: Manual Proto Convert
 
 on:
-  workflow_dispatch:
-
+  workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,13 +13,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 20
 
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: temurin
+          java-version: 17
 
       - name: Merge Opensearch Spec
         run: npm ci && npm run merge

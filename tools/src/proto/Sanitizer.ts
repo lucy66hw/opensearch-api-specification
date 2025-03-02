@@ -8,7 +8,6 @@
 */
 
 import _ from "lodash";
-import { OpenAPIV3 } from "openapi-types";
 
 /**
  * Sanitizer class:
@@ -16,27 +15,27 @@ import { OpenAPIV3 } from "openapi-types";
  * and renaming schema definitions.
  */
 export class Sanitizer {
-  public sanitize_spec(spec: OpenAPIV3.Document): any {
+  public sanitize_spec(spec: any): any {
     if (spec.paths != null) {
       this.sanitize_fields(spec.paths, false);
     }
-    if (spec.components) {
+    if (spec.components != null) {
       this.sanitize_components(spec.components);
     }
     return spec;
   }
 
-  sanitize_components(components: OpenAPIV3.ComponentsObject): void {
-    if (components.schemas) {
+  sanitize_components(components: any): void {
+    if (components.schemas != null) {
       this.sanitize_fields(components.schemas, true);
     }
-    if (components.parameters) {
+    if (components.schemas != null) {
       this.sanitize_fields(components.parameters, false);
     }
-    if (components.requestBodies) {
+    if (components.schemas != null) {
       this.sanitize_fields(components.requestBodies, false);
     }
-    if (components.responses) {
+    if (components.schemas != null) {
       this.sanitize_fields(components.responses, false);
     }
   }

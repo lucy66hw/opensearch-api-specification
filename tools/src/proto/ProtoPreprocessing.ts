@@ -12,7 +12,7 @@ import { read_yaml, write_yaml } from '../helpers';
 import Filter from './Filter';
 import { Sanitizer } from './Sanitizer';
 import { Logger, LogLevel } from '../Logger'
-import path, {resolve} from 'path';
+import path, { resolve } from 'path';
 
 let config_filtered_path: string[] | undefined;
 try {

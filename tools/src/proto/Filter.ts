@@ -59,15 +59,12 @@ export default class Filter {
       }
       this._spec.paths[p] = spec.paths[p];
     }
-    this.filter_by_max_parameters(this._spec.paths);
+    this.filter_by_max_parameters(this._spec.paths as OpenAPIV3.PathsObject);
     const queue: string[] = [];
     const visited: Set<string> = new Set();
 
     // collect all components that are referenced by the paths
-    for (const p of Object.keys(this._spec.paths)) {
-      traverse_and_enqueue(this._spec.paths[p], queue, visited);
-    }
-
+    traverse_and_enqueue(this._spec.paths , queue, visited);
     while (queue.length > 0) {
       const ref_str = queue.shift();
       if (ref_str == null || ref_str == "") continue;
@@ -89,19 +86,25 @@ export default class Filter {
     return this._spec;
   }
 
-  filter_by_max_parameters(paths: Record<string, any>): void {
+  filter_by_max_parameters(paths: OpenAPIV3.PathsObject): void {
     const new_paths: OpenAPIV3.PathsObject = {};
     let operation_map = new Map<string, Array<Record<string, OpenAPIV3.PathItemObject>>>();
     for (const path in paths) {
       const path_item = paths[path];
-      for (const method in path_item) {
+      if (!path_item) continue;
+      for (const method of Object.keys(path_item) as Array<keyof OpenAPIV3.PathItemObject>) {
         const operation = path_item[method];
-        if (operation != null && typeof operation === 'object' && operation['x-operation-group']) {
-          const group: string = operation['x-operation-group'];
+        if (operation != null && typeof operation === 'object' && 'x-operation-group' in operation) {
+          const group: string = operation['x-operation-group'] as string;
           if (!operation_map.get(group)) {
             operation_map.set(group, []);
           }
-          const group_map: Record<string, Record<string, OpenAPIV3.PathItemObject>> = { [path]: { [method]: operation } };
+          const group_map: Record<string, OpenAPIV3.PathItemObject> = {
+            [path]: {
+              ...paths[path],
+              [method]: operation as OpenAPIV3.OperationObject,
+            },
+          };
           operation_map.get(group)?.push(group_map);
         }
       }
@@ -112,11 +115,11 @@ export default class Filter {
       let max_parameters = -1;
       let max_path_item: OpenAPIV3.PathItemObject | null = null;
       let max_path = '';
-      for (const op of operations) {// array of path items
+      for (const op of operations) {
         for (const [path, path_item] of Object.entries(op)) {
           for (const operation of Object.values(path_item)) {
             if (operation != null && typeof operation === 'object' && Array.isArray((operation as OpenAPIV3.OperationObject).parameters)) {
-              const param_count = (operation as OpenAPIV3.OperationObject).parameters!.length;
+              const param_count = (operation as OpenAPIV3.OperationObject).parameters?.length??0;
               if (param_count > max_parameters) {
                 max_parameters = param_count;
                 max_path = path;
