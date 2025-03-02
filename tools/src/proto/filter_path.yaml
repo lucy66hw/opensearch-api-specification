@@ -1,0 +1,6 @@
+paths:
+  - /_alias/{name}
+  - /_search
+  - /{index}/_alias
+  - /{index}/_alias/{name}
+  - /{index}/_search
