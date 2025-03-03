@@ -1,6 +1,11 @@
 paths:
-  - /_alias/{name}
+  - /_bulk
   - /_search
-  - /{index}/_alias
-  - /{index}/_alias/{name}
+  - /{index}/_bulk
+  - /{index}/_create/{id}
+  - /{index}/_doc
+  - /{index}/_doc/{id}
+  - /{index}/_explain/{id}
   - /{index}/_search
+  - /{index}/_source/{id}
+  - /{index}/_update/{id}
