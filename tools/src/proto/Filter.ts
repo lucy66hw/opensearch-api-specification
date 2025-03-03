@@ -18,12 +18,15 @@ function traverse_and_enqueue(node: any, queue: string[],  visited: Set<string>)
   for (const key in node) {
     var item = node[key]
 
-    if (item?.$ref !== undefined && !visited.has(item.$ref as string) && (item.$ref as string).startsWith('#/components/')) {
+    if (item?.$ref !== undefined && !visited.has(item.$ref as string) && (item.$ref as string).startsWith('#/components/') || (_.isString(item) && item.startsWith('#/components/'))) {
       var ref = item.$ref as string
+      if (ref == null || ref == "" && _.isString(item)){
+        ref = item as string;
+      }
       queue.push(ref);
       visited.add(ref);
     }
-    if (_.isObject(item) || _.isArray(item)) {
+    if (_.isObject(item) || _.isArray(item) || (_.isString(item) && item.startsWith('#/components/'))) {
       traverse_and_enqueue(item, queue, visited)
     }
   }
