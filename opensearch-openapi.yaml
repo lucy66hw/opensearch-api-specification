@@ -45338,6 +45338,8 @@ components:
               $ref: '#/components/schemas/_common.query_dsl___RankFeatureFunctionLinear'
             sigmoid:
               $ref: '#/components/schemas/_common.query_dsl___RankFeatureFunctionSigmoid'
+            testa:
+              type: string
           required:
             - field
     _common.query_dsl___RegexpQuery:
