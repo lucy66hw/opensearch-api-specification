@@ -43727,7 +43727,7 @@ components:
           $ref: '#/components/schemas/_common___Duration'
     _common.query_dsl___DateRangeQueryParameters:
       allOf:
-        - ref: '#/components/schemas/RangeQueryBase'
+        - $ref: '#/components/schemas/_common.query_dsl___RangeQueryBase'
         - type: object
           properties:
             gt:
@@ -44759,7 +44759,7 @@ components:
               $ref: '#/components/schemas/_common.query_dsl___QueryContainer'
     _common.query_dsl___NumberRangeQueryParameters:
       allOf:
-        - ref: '#/components/schemas/RangeQueryBase'
+        - $ref: '#/components/schemas/_common.query_dsl___RangeQueryBase'
         - type: object
           properties:
             gt:
@@ -45264,6 +45264,10 @@ components:
             - type: integer
               format: int32
             - type: string
+    _common.query_dsl___RangeQuery:
+      oneOf:
+        - $ref: '#/components/schemas/_common.query_dsl___NumberRangeQueryParameters'
+        - $ref: '#/components/schemas/_common.query_dsl___DateRangeQueryParameters'
     _common.query_dsl___RangeQueryBase:
       allOf:
         - $ref: '#/components/schemas/_common.query_dsl___QueryBase'
