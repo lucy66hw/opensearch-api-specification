@@ -97,3 +97,10 @@ jobs:
           body: |
             I've drafted a release, [${{ github.ref_name }}](${{ steps.release.outputs.url }}), please verify and release it.
             Preparing for the next developer iteration, ${{ steps.version.outputs.version }}.
+      - name: Trigger Proto Convertion Workflow
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.OP_TOKEN }}" \
+            https://api.github.com/repos/lucy66hw/opensearch-protos/dispatches \
+            -d '{"event_type": "trigger"}'
