@@ -1660,9 +1660,13 @@ components:
               $ref: '#/components/schemas/TextQueryType'
           required:
             - query
+    RangeQuery:
+      oneOf:
+        - $ref: '#/components/schemas/NumberRangeQueryParameters'
+        - $ref: '#/components/schemas/DateRangeQueryParameters'
     DateRangeQueryParameters:
       allOf:
-        - ref: '#/components/schemas/RangeQueryBase'
+        - $ref: '#/components/schemas/RangeQueryBase'
         - type: object
           properties:
             gt:
@@ -1687,7 +1691,7 @@ components:
               $ref: '_common.yaml#/components/schemas/TimeZone'
     NumberRangeQueryParameters:
       allOf:
-        - ref: '#/components/schemas/RangeQueryBase'
+        - $ref: '#/components/schemas/RangeQueryBase'
         - type: object
           properties:
             gt:
