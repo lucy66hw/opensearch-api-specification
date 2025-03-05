@@ -11,6 +11,8 @@ jobs:
 
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.OP_TOKEN }}
         with:
           fail: true
           args: --base . --verbose --no-progress './**/*.yaml' './**/*.yml' './**/*.md' './**/*.json'  './**/*.ts' --exclude-path ./package-lock.json --accept 200,429
