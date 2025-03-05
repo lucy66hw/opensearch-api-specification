@@ -15,4 +15,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.OP_TOKEN }}
         with:
           fail: true
-          args: --base . --verbose --no-progress './**/*.yaml' './**/*.yml' './**/*.md' './**/*.json'  './**/*.ts' --exclude-path ./package-lock.json --accept 200,429
+          args: --base . --verbose --no-progress './**/*.yaml' './**/*.yml' './**/*.md' './**/*.json'  './**/*.ts' --exclude-path ./package-lock.json --exclude 'https://api.github.com/repos/lucy66hw/opensearch-protos/dispatches' --accept 200,429
