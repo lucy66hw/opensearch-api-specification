@@ -271,6 +271,8 @@ components:
                 - type: array
                   items:
                     $ref: '#/components/schemas/QueryContainer'
+            test:
+              type: string
             minimum_should_match:
               $ref: '_common.yaml#/components/schemas/MinimumShouldMatch'
             must:
