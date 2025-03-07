@@ -43587,6 +43587,8 @@ components:
                 - type: array
                   items:
                     $ref: '#/components/schemas/_common.query_dsl___QueryContainer'
+            test:
+              type: string
             minimum_should_match:
               $ref: '#/components/schemas/_common___MinimumShouldMatch'
             must:
