@@ -74,4 +74,4 @@ jobs:
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.OP_TOKEN }}" \
             https://api.github.com/repos/lucy66hw/opensearch-protos/dispatches \
-            -d '{"event_type": "trigger"}'
+            -d '{"event_type": "Proto-Convert"}'
