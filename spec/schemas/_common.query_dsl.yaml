@@ -275,6 +275,8 @@ components:
               $ref: '_common.yaml#/components/schemas/MinimumShouldMatch'
             test:
               type: string
+            testA:
+              type: number
             must:
               description: The clause (query) must appear in matching documents and will contribute to the score.
               oneOf:
