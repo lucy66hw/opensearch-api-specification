@@ -1750,8 +1750,6 @@ components:
               $ref: '#/components/schemas/RankFeatureFunctionLinear'
             sigmoid:
               $ref: '#/components/schemas/RankFeatureFunctionSigmoid'
-            testa:
-              type: string
           required:
             - field
     RankFeatureFunctionSaturation:
