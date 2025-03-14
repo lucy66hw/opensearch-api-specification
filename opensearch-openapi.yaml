@@ -43591,6 +43591,8 @@ components:
               $ref: '#/components/schemas/_common___MinimumShouldMatch'
             test:
               type: string
+            testA:
+              type: number
             must:
               description: The clause (query) must appear in matching documents and will contribute to the score.
               oneOf:
@@ -43671,8 +43673,6 @@ components:
               type: boolean
             operator:
               $ref: '#/components/schemas/_common.query_dsl___CombinedFieldsOperator'
-            test:
-              type: string
             minimum_should_match:
               $ref: '#/components/schemas/_common___MinimumShouldMatch'
             zero_terms_query:
@@ -43706,8 +43706,6 @@ components:
                   $ref: '#/components/schemas/_common___MinimumShouldMatch'
                 query:
                   type: string
-                testa:
-                  type: boolean
               required:
                 - query
     _common.query_dsl___ConstantScoreQuery:
@@ -44045,7 +44043,6 @@ components:
       enum:
         - indexed
         - memory
-        - testc
     _common.query_dsl___GeoPolygonPoints:
       type: object
       properties:
@@ -44053,8 +44050,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/_common___GeoLocation'
-        testa:
-          type: string
       required:
         - points
     _common.query_dsl___GeoPolygonQuery:
@@ -46968,7 +46963,6 @@ components:
         - chars
         - sentence
         - word
-        - testA
     _core.search___BuiltinHighlighterType:
       oneOf:
         - type: string
