@@ -5,6 +5,11 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [Unreleased]
 
 ### Added
+
+- Added defaults for Snapshot APIs ([#830](https://github.com/opensearch-project/opensearch-api-specification/pull/830))
+- Added defaults for Snapshot API request body fields ([#846](https://github.com/opensearch-project/opensearch-api-specification/pull/846/))
+- Added specs for LTR plugin for stats endpoints ([#786](https://github.com/opensearch-project/opensearch-api-specification/issues/786/))
+- Added defaults for Cluster APIs ([#824](https://github.com/opensearch-project/opensearch-api-specification/pull/824/))
 - Added `aggs` alias for nested aggregations ([#818](https://github.com/opensearch-project/opensearch-api-specification/pull/818))
 - Added API specs for query groups lifecycle APIs ([#649](https://github.com/opensearch-project/opensearch-api-specification/pull/649))
 - Added Python and Ruby spec validators ([#646](https://github.com/opensearch-project/opensearch-api-specification/pull/646))
@@ -63,6 +68,10 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Added `SimplePatternTokenizer` and `SimplePatternSplitTokenizer` ([#820](https://github.com/opensearch-project/opensearch-api-specification/pull/820))
 - Added `optional_extended_plugins` field to `PluginStats` ([#814](https://github.com/opensearch-project/opensearch-api-specification/pull/814))
 - Added `id` & `group_by` fields to `TopQuery` ([#814](https://github.com/opensearch-project/opensearch-api-specification/pull/814))
+- Added `normalizer` to `WildcardProperty` ([#847](https://github.com/opensearch-project/opensearch-api-specification/pull/847))
+- Added `pagination_depth` to `HybridQuery` ([#848](https://github.com/opensearch-project/opensearch-api-specification/pull/848))
+- Added `warm` to `ClusterNodeCount` ([#852](https://github.com/opensearch-project/opensearch-api-specification/pull/852))
+- Added `total_primary_shards_per_node` to `IndexRoutingAllocation` ([#852](https://github.com/opensearch-project/opensearch-api-specification/pull/852))
 
 ### Removed
 - Removed unsupported `_common.mapping:SourceField`'s `mode` field and associated `_common.mapping:SourceFieldMode` enum ([#652](https://github.com/opensearch-project/opensearch-api-specification/pull/652))
@@ -116,6 +125,8 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Fixed Aggregation schemas ([#801](https://github.com/opensearch-project/opensearch-api-specification/pull/801))
 - Fixed FilterQueryRequestProcessor to use correct query type ([#821](https://github.com/opensearch-project/opensearch-api-specification/pull/821))
 - Fixed `knn.train_model`'s request body `method` field to accept an object rather than a string ([#814](https://github.com/opensearch-project/opensearch-api-specification/pull/814))
+- Fixed REST status codes for RBAC and provisioning for Flow Framework plugin ([#842](https://github.com/opensearch-project/opensearch-api-specification/pull/842), [#852](https://github.com/opensearch-project/opensearch-api-specification/pull/852))
+- Fixed swapped schema references in nodes info API buffer fields ([#808](https://github.com/opensearch-project/opensearch-api-specification/pull/808))
 
 ### Changed
 - Changed `tasks._common:TaskInfo` and `tasks._common:TaskGroup` to be composed of a `tasks._common:TaskInfoBase` ([#683](https://github.com/opensearch-project/opensearch-api-specification/pull/683))
