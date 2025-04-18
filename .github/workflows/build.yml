@@ -48,13 +48,19 @@ jobs:
             LICENSE.txt
             build/*
 
-      - name: Trigger Proto Convertion Workflow
+      - name: Trigger OpenSearch Protobuf Repository Proto Convertion Workflow
         run: |
           curl -X POST \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: token ${{ secrets.OP_TOKEN }}" \
-            https://api.github.com/repos/opensearch-project/opensearch-protobufs/dispatches \
-            -d '{"event_type": "trigger"}'
+          -H "Accept: application/vnd.github.v3+json" \
+          -H "Authorization: token ${{ secrets.REPO_B_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          https://api.github.com/repos/lucy66hwt/opensearch-protobufs/dispatches \
+          -d "{
+            \"event_type\": \"trigger\",
+            \"client_payload\": {
+              \"shared_key\": \"${{ secrets.SHARED_KEY }}\"
+            }
+          }"
 
       - name: Extract Changelog
         id: changelog
