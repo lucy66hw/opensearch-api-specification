@@ -48,6 +48,14 @@ jobs:
             LICENSE.txt
             build/*
 
+      - name: Trigger Proto Convertion Workflow
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.OP_TOKEN }}" \
+            https://api.github.com/repos/lucy66hw/opensearch-protobufs/dispatches \
+            -d '{"event_type": "trigger"}'
+
       - name: Extract Changelog
         id: changelog
         uses: sean0x42/markdown-extract@v2
