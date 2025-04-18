@@ -53,7 +53,7 @@ jobs:
           curl -X POST \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.OP_TOKEN }}" \
-            https://api.github.com/repos/lucy66hw/opensearch-protobufs/dispatches \
+            https://api.github.com/repos/opensearch-project/opensearch-protobufs/dispatches \
             -d '{"event_type": "trigger"}'
 
       - name: Extract Changelog
