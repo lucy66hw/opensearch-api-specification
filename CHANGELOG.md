@@ -92,6 +92,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Removed `id` from `required` in `indices.termvectors@200` ([#734](https://github.com/opensearch-project/opensearch-api-specification/pull/734))
 - Removed duplicate `string` from `MultiTermQueryRewrite` ([#862](https://github.com/opensearch-project/opensearch-api-specification/pull/862/))
 - Removed unneeded `ExplanationDetail` from `Explanation` ([#860](https://github.com/opensearch-project/opensearch-api-specification/pull/860))
+- Removed unsupported `max_score` from ResponseBody ([#891](https://github.com/opensearch-project/opensearch-api-specification/pull/891))
 
 ### Fixed
 - Spec passes OpenAPI 3.1.0 validations ([#646](https://github.com/opensearch-project/opensearch-api-specification/pull/646))
@@ -150,7 +151,7 @@ Inspired from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Changed `FlowFrameworkDeleteResponse` to utilize `WriteResponseBase` ([#814](https://github.com/opensearch-project/opensearch-api-specification/pull/814))
 - Changed `DistanceFeatureQuery` and `RangeQuery` from (allOf + oneOf) to (oneOf + allOf) ([#865](https://github.com/opensearch-project/opensearch-api-specification/pull/865))
 - Changed `ClusterJvm.versions`, `ClusterOperatingSystemName.name` and `ClusterOperatingSystemPrettyName.pretty_name` to not be required as AOS does not return them ([#866](https://github.com/opensearch-project/opensearch-api-specification/pull/866))
-
+- Changed `ScriptedMetricAggregate` value from true to {} ([#892](https://github.com/opensearch-project/opensearch-api-specification/pull/892))
 ## [0.1.0] - 2024-10-25
 
 ### Added
