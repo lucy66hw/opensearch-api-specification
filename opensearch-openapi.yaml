@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: OpenSearch API Specification
-  version: 0.2.0
+  version: 0.3.0
   x-api-version: 2.16.0
 paths:
   /:
@@ -2981,6 +2981,143 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/list.shards___200'
+  /_ltr:
+    delete:
+      operationId: ltr.delete_default_store.0
+      x-operation-group: ltr.delete_default_store
+      x-version-added: 2.17.1
+      description: Deletes the default feature store.
+      responses:
+        '200':
+          $ref: '#/components/responses/ltr.delete_default_store___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    get:
+      operationId: ltr.list_stores.0
+      x-operation-group: ltr.list_stores
+      x-version-added: 2.17.1
+      description: Lists all available feature stores.
+      responses:
+        '200':
+          $ref: '#/components/responses/ltr.list_stores___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    put:
+      operationId: ltr.create_default_store.0
+      x-operation-group: ltr.create_default_store
+      x-version-added: 2.17.1
+      description: Creates the default feature store.
+      responses:
+        '200':
+          $ref: '#/components/responses/ltr.create_default_store___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+  /_ltr/_cachestats:
+    get:
+      operationId: ltr.cache_stats.0
+      x-operation-group: ltr.cache_stats
+      x-version-added: '2.19'
+      description: Retrieves cache statistics for all feature stores.
+      responses:
+        '200':
+          $ref: '#/components/responses/ltr.cache_stats___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+  /_ltr/_clearcache:
+    post:
+      operationId: ltr.clear_cache.0
+      x-operation-group: ltr.clear_cache
+      x-version-added: '2.19'
+      description: Clears the store caches.
+      responses:
+        '200':
+          $ref: '#/components/responses/ltr.clear_cache___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+  /_ltr/{store}:
+    delete:
+      operationId: ltr.delete_store.0
+      x-operation-group: ltr.delete_store
+      x-version-added: 2.17.1
+      description: Deletes a feature store with the specified name.
+      parameters:
+        - $ref: '#/components/parameters/ltr.delete_store___path.store'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/ltr.delete_store___200'
+    get:
+      operationId: ltr.get_store.0
+      x-operation-group: ltr.get_store
+      x-version-added: 2.17.1
+      description: Checks if a store exists.
+      parameters:
+        - $ref: '#/components/parameters/ltr.get_store___path.store'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/ltr.get_store___200'
+        '404':
+          $ref: '#/components/responses/ltr.get_store___404'
+    put:
+      operationId: ltr.create_store.0
+      x-operation-group: ltr.create_store
+      x-version-added: 2.17.1
+      description: Creates a new feature store with the specified name.
+      parameters:
+        - $ref: '#/components/parameters/ltr.create_store___path.store'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/ltr.create_store___200'
+  /_ltr/{store}/_clearcache:
+    post:
+      operationId: ltr.clear_cache.1
+      x-operation-group: ltr.clear_cache
+      x-version-added: '2.19'
+      description: Clears the store caches.
+      parameters:
+        - $ref: '#/components/parameters/ltr.clear_cache___path.store'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/ltr.clear_cache___200'
   /_mapping:
     get:
       operationId: indices.get_mapping.0
@@ -4643,7 +4780,7 @@ paths:
     get:
       operationId: ltr.stats.2
       x-operation-group: ltr.stats
-      x-version-added: '1.0'
+      x-version-added: '2.19'
       description: Provides information about the current status of the LTR plugin.
       parameters:
         - $ref: '#/components/parameters/ltr.stats___path.node_id'
@@ -4660,7 +4797,7 @@ paths:
     get:
       operationId: ltr.stats.3
       x-operation-group: ltr.stats
-      x-version-added: '1.0'
+      x-version-added: '2.19'
       description: Provides information about the current status of the LTR plugin.
       parameters:
         - $ref: '#/components/parameters/ltr.stats___path.node_id'
@@ -4678,7 +4815,7 @@ paths:
     get:
       operationId: ltr.stats.0
       x-operation-group: ltr.stats
-      x-version-added: '1.0'
+      x-version-added: '2.19'
       description: Provides information about the current status of the LTR plugin.
       parameters:
         - $ref: '#/components/parameters/ltr.stats___query.timeout'
@@ -4694,7 +4831,7 @@ paths:
     get:
       operationId: ltr.stats.1
       x-operation-group: ltr.stats
-      x-version-added: '1.0'
+      x-version-added: '2.19'
       description: Provides information about the current status of the LTR plugin.
       parameters:
         - $ref: '#/components/parameters/ltr.stats___path.stat'
@@ -5944,6 +6081,9 @@ paths:
       parameters:
         - $ref: '#/components/parameters/neural.stats___path.node_id'
         - $ref: '#/components/parameters/neural.stats___query.flat_stat_paths'
+        - $ref: '#/components/parameters/neural.stats___query.include_all_nodes'
+        - $ref: '#/components/parameters/neural.stats___query.include_individual_nodes'
+        - $ref: '#/components/parameters/neural.stats___query.include_info'
         - $ref: '#/components/parameters/neural.stats___query.include_metadata'
         - $ref: '#/components/parameters/_global___query.pretty'
         - $ref: '#/components/parameters/_global___query.human'
@@ -5963,6 +6103,9 @@ paths:
         - $ref: '#/components/parameters/neural.stats___path.node_id'
         - $ref: '#/components/parameters/neural.stats___path.stat'
         - $ref: '#/components/parameters/neural.stats___query.flat_stat_paths'
+        - $ref: '#/components/parameters/neural.stats___query.include_all_nodes'
+        - $ref: '#/components/parameters/neural.stats___query.include_individual_nodes'
+        - $ref: '#/components/parameters/neural.stats___query.include_info'
         - $ref: '#/components/parameters/neural.stats___query.include_metadata'
         - $ref: '#/components/parameters/_global___query.pretty'
         - $ref: '#/components/parameters/_global___query.human'
@@ -5980,6 +6123,9 @@ paths:
       description: Provides information about the current status of the neural-search plugin.
       parameters:
         - $ref: '#/components/parameters/neural.stats___query.flat_stat_paths'
+        - $ref: '#/components/parameters/neural.stats___query.include_all_nodes'
+        - $ref: '#/components/parameters/neural.stats___query.include_individual_nodes'
+        - $ref: '#/components/parameters/neural.stats___query.include_info'
         - $ref: '#/components/parameters/neural.stats___query.include_metadata'
         - $ref: '#/components/parameters/_global___query.pretty'
         - $ref: '#/components/parameters/_global___query.human'
@@ -5998,6 +6144,9 @@ paths:
       parameters:
         - $ref: '#/components/parameters/neural.stats___path.stat'
         - $ref: '#/components/parameters/neural.stats___query.flat_stat_paths'
+        - $ref: '#/components/parameters/neural.stats___query.include_all_nodes'
+        - $ref: '#/components/parameters/neural.stats___query.include_individual_nodes'
+        - $ref: '#/components/parameters/neural.stats___query.include_info'
         - $ref: '#/components/parameters/neural.stats___query.include_metadata'
         - $ref: '#/components/parameters/_global___query.pretty'
         - $ref: '#/components/parameters/_global___query.human'
@@ -6862,6 +7011,355 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/rollups.stop___200'
+  /_plugins/_search_relevance/{node_id}/stats:
+    get:
+      operationId: search_relevance.get_node_stats.0
+      x-operation-group: search_relevance.get_node_stats
+      x-version-added: '3.1'
+      description: Gets stats by node.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___path.node_id'
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___query.flat_stat_paths'
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___query.include_all_nodes'
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___query.include_individual_nodes'
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___query.include_info'
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___query.include_metadata'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_node_stats___200'
+  /_plugins/_search_relevance/{node_id}/stats/{stat}:
+    get:
+      operationId: search_relevance.get_node_stats.1
+      x-operation-group: search_relevance.get_node_stats
+      x-version-added: '3.1'
+      description: Gets stats by node.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___path.node_id'
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___path.stat'
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___query.flat_stat_paths'
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___query.include_all_nodes'
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___query.include_individual_nodes'
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___query.include_info'
+        - $ref: '#/components/parameters/search_relevance.get_node_stats___query.include_metadata'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_node_stats___200'
+  /_plugins/_search_relevance/experiments:
+    get:
+      operationId: search_relevance.get_experiments.0
+      x-operation-group: search_relevance.get_experiments
+      x-version-added: '3.1'
+      description: Gets experiments.
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_experiments___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    put:
+      operationId: search_relevance.put_experiments.0
+      x-operation-group: search_relevance.put_experiments
+      x-version-added: '3.1'
+      description: Creates an experiment.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.put_experiments'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.put_experiments___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+  /_plugins/_search_relevance/experiments/{experiment_id}:
+    delete:
+      operationId: search_relevance.delete_experiments.0
+      x-operation-group: search_relevance.delete_experiments
+      x-version-added: '3.1'
+      description: Deletes a specified experiment.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.delete_experiments___path.experiment_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.delete_experiments___200'
+    get:
+      operationId: search_relevance.get_experiments.1
+      x-operation-group: search_relevance.get_experiments
+      x-version-added: '3.1'
+      description: Gets experiments.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.get_experiments___path.experiment_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_experiments___200'
+  /_plugins/_search_relevance/judgments:
+    get:
+      operationId: search_relevance.get_judgments.0
+      x-operation-group: search_relevance.get_judgments
+      x-version-added: '3.1'
+      description: Gets judgments.
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_judgments___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    put:
+      operationId: search_relevance.put_judgments.0
+      x-operation-group: search_relevance.put_judgments
+      x-version-added: '3.1'
+      description: Creates a judgment.
+      requestBody:
+        description: The request body of the judgment to be created.
+        $ref: '#/components/requestBodies/search_relevance.put_judgments'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.put_judgments___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+  /_plugins/_search_relevance/judgments/{judgment_id}:
+    delete:
+      operationId: search_relevance.delete_judgments.0
+      x-operation-group: search_relevance.delete_judgments
+      x-version-added: '3.1'
+      description: Deletes a specified judgment.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.delete_judgments___path.judgment_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.delete_judgments___200'
+    get:
+      operationId: search_relevance.get_judgments.1
+      x-operation-group: search_relevance.get_judgments
+      x-version-added: '3.1'
+      description: Gets judgments.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.get_judgments___path.judgment_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_judgments___200'
+  /_plugins/_search_relevance/query_sets:
+    get:
+      operationId: search_relevance.get_query_sets.0
+      x-operation-group: search_relevance.get_query_sets
+      x-version-added: '3.1'
+      description: Lists the current query sets available.
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_query_sets___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    post:
+      operationId: search_relevance.post_query_sets.0
+      x-operation-group: search_relevance.post_query_sets
+      x-version-added: '3.1'
+      description: Creates a new query set by sampling queries from the user behavior data.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.post_query_sets'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.post_query_sets___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    put:
+      operationId: search_relevance.put_query_sets.0
+      x-operation-group: search_relevance.put_query_sets
+      x-version-added: '3.1'
+      description: Creates a new query set by uploading manually.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.put_query_sets'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.put_query_sets___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+  /_plugins/_search_relevance/query_sets/{query_set_id}:
+    delete:
+      operationId: search_relevance.delete_query_sets.0
+      x-operation-group: search_relevance.delete_query_sets
+      x-version-added: '3.1'
+      description: Deletes a query set.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.delete_query_sets___path.query_set_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.delete_query_sets___200'
+    get:
+      operationId: search_relevance.get_query_sets.1
+      x-operation-group: search_relevance.get_query_sets
+      x-version-added: '3.1'
+      description: Lists the current query sets available.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.get_query_sets___path.query_set_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_query_sets___200'
+  /_plugins/_search_relevance/search_configurations:
+    get:
+      operationId: search_relevance.get_search_configurations.0
+      x-operation-group: search_relevance.get_search_configurations
+      x-version-added: '3.1'
+      description: Gets the search configurations.
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_search_configurations___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    put:
+      operationId: search_relevance.put_search_configurations.0
+      x-operation-group: search_relevance.put_search_configurations
+      x-version-added: '3.1'
+      description: Creates a search configuration.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.put_search_configurations'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.put_search_configurations___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+  /_plugins/_search_relevance/search_configurations/{search_configuration_id}:
+    delete:
+      operationId: search_relevance.delete_search_configurations.0
+      x-operation-group: search_relevance.delete_search_configurations
+      x-version-added: '3.1'
+      description: Deletes a specified search configuration.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.delete_search_configurations___path.search_configuration_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.delete_search_configurations___200'
+    get:
+      operationId: search_relevance.get_search_configurations.1
+      x-operation-group: search_relevance.get_search_configurations
+      x-version-added: '3.1'
+      description: Gets the search configurations.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.get_search_configurations___path.search_configuration_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_search_configurations___200'
+  /_plugins/_search_relevance/stats:
+    get:
+      operationId: search_relevance.get_stats.0
+      x-operation-group: search_relevance.get_stats
+      x-version-added: '3.1'
+      description: Gets stats.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.get_stats___query.flat_stat_paths'
+        - $ref: '#/components/parameters/search_relevance.get_stats___query.include_all_nodes'
+        - $ref: '#/components/parameters/search_relevance.get_stats___query.include_individual_nodes'
+        - $ref: '#/components/parameters/search_relevance.get_stats___query.include_info'
+        - $ref: '#/components/parameters/search_relevance.get_stats___query.include_metadata'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_stats___200'
+  /_plugins/_search_relevance/stats/{stat}:
+    get:
+      operationId: search_relevance.get_stats.1
+      x-operation-group: search_relevance.get_stats
+      x-version-added: '3.1'
+      description: Gets stats.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.get_stats___path.stat'
+        - $ref: '#/components/parameters/search_relevance.get_stats___query.flat_stat_paths'
+        - $ref: '#/components/parameters/search_relevance.get_stats___query.include_all_nodes'
+        - $ref: '#/components/parameters/search_relevance.get_stats___query.include_individual_nodes'
+        - $ref: '#/components/parameters/search_relevance.get_stats___query.include_info'
+        - $ref: '#/components/parameters/search_relevance.get_stats___query.include_metadata'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_stats___200'
   /_plugins/_security/api/_upgrade_check:
     get:
       operationId: security.config_upgrade_check.0
@@ -9046,6 +9544,163 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/transforms.stop___200'
+  /_plugins/geospatial/_upload/stats:
+    get:
+      operationId: geospatial.get_upload_stats.0
+      x-operation-group: geospatial.get_upload_stats
+      x-version-added: '2.11'
+      description: Retrieves statistics for all geospatial uploads.
+      responses:
+        '200':
+          $ref: '#/components/responses/geospatial.get_upload_stats___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+  /_plugins/geospatial/geojson/_upload:
+    post:
+      operationId: geospatial.geojson_upload_post.0
+      x-operation-group: geospatial.geojson_upload_post
+      x-version-added: '2.11'
+      description: |-
+        Use an OpenSearch query to upload `GeoJSON`, operation will fail if index exists.
+        - When type is `geo_point`, only Point geometry is allowed
+        - When type is `geo_shape`, all geometry types are allowed (Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon, GeometryCollection, Envelope).
+      requestBody:
+        $ref: '#/components/requestBodies/geospatial.geojson_upload_post'
+      responses:
+        '200':
+          $ref: '#/components/responses/geospatial.geojson_upload_post___200'
+        '400':
+          $ref: '#/components/responses/geospatial.geojson_upload_post___400'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    put:
+      operationId: geospatial.geojson_upload_put.0
+      x-operation-group: geospatial.geojson_upload_put
+      x-version-added: '2.11'
+      description: |-
+        Use an OpenSearch query to upload `GeoJSON` regardless if index exists.
+        - When type is `geo_point`, only Point geometry is allowed
+        - When type is `geo_shape`, all geometry types are allowed (Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon, GeometryCollection, Envelope).
+      requestBody:
+        $ref: '#/components/requestBodies/geospatial.geojson_upload_put'
+      responses:
+        '200':
+          $ref: '#/components/responses/geospatial.geojson_upload_put___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+  /_plugins/geospatial/ip2geo/datasource:
+    get:
+      operationId: geospatial.get_ip2geo_datasource.0
+      x-operation-group: geospatial.get_ip2geo_datasource
+      x-version-added: '2.11'
+      description: Get one or more IP2Geo data sources, defaulting to returning all if no names specified.
+      externalDocs:
+        url: https://docs.opensearch.org/docs/latest/ingest-pipelines/processors/ip2geo/#sending-a-get-request
+      responses:
+        '200':
+          $ref: '#/components/responses/geospatial.get_ip2geo_datasource___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+  /_plugins/geospatial/ip2geo/datasource/{name}:
+    delete:
+      operationId: geospatial.delete_ip2geo_datasource.0
+      x-operation-group: geospatial.delete_ip2geo_datasource
+      x-version-added: '2.11'
+      description: Delete a specific IP2Geo data source.
+      externalDocs:
+        url: https://docs.opensearch.org/docs/latest/ingest-pipelines/processors/ip2geo/#deleting-the-ip2geo-data-source
+      parameters:
+        - $ref: '#/components/parameters/geospatial.delete_ip2geo_datasource___path.name'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/geospatial.delete_ip2geo_datasource___200'
+        '404':
+          $ref: '#/components/responses/geospatial.delete_ip2geo_datasource___404'
+    get:
+      operationId: geospatial.get_ip2geo_datasource.1
+      x-operation-group: geospatial.get_ip2geo_datasource
+      x-version-added: '2.11'
+      description: Get one or more IP2Geo data sources, defaulting to returning all if no names specified.
+      externalDocs:
+        url: https://docs.opensearch.org/docs/latest/ingest-pipelines/processors/ip2geo/#sending-a-get-request
+      parameters:
+        - $ref: '#/components/parameters/geospatial.get_ip2geo_datasource___path.name'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/geospatial.get_ip2geo_datasource___200'
+    put:
+      operationId: geospatial.put_ip2geo_datasource.0
+      x-operation-group: geospatial.put_ip2geo_datasource
+      x-version-added: '2.11'
+      description: |-
+        Create a specific IP2Geo data source.
+        Default values:
+          - `endpoint`: `"https://geoip.maps.opensearch.org/v1/geolite2-city/manifest.json"`
+          - `update_interval_in_days`: 3.
+      externalDocs:
+        url: https://docs.opensearch.org/docs/latest/ingest-pipelines/processors/ip2geo/#data-source-options
+      parameters:
+        - $ref: '#/components/parameters/geospatial.put_ip2geo_datasource___path.name'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/geospatial.put_ip2geo_datasource'
+      responses:
+        '200':
+          $ref: '#/components/responses/geospatial.put_ip2geo_datasource___200'
+        '400':
+          $ref: '#/components/responses/geospatial.put_ip2geo_datasource___400'
+  /_plugins/geospatial/ip2geo/datasource/{name}/_settings:
+    put:
+      operationId: geospatial.put_ip2geo_datasource_settings.0
+      x-operation-group: geospatial.put_ip2geo_datasource_settings
+      x-version-added: '2.11'
+      description: Update a specific IP2Geo data source.
+      externalDocs:
+        url: https://docs.opensearch.org/docs/latest/ingest-pipelines/processors/ip2geo/#updating-an-ip2geo-data-source
+      parameters:
+        - $ref: '#/components/parameters/geospatial.put_ip2geo_datasource_settings___path.name'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/geospatial.put_ip2geo_datasource_settings'
+      responses:
+        '200':
+          $ref: '#/components/responses/geospatial.put_ip2geo_datasource_settings___200'
+        '404':
+          $ref: '#/components/responses/geospatial.put_ip2geo_datasource_settings___404'
   /_rank_eval:
     get:
       operationId: rank_eval.0
@@ -9697,6 +10352,8 @@ paths:
         - $ref: '#/components/parameters/_global___query.error_trace'
         - $ref: '#/components/parameters/_global___query.source'
         - $ref: '#/components/parameters/_global___query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/search_shards'
       responses:
         '200':
           $ref: '#/components/responses/search_shards___200'
@@ -9719,6 +10376,8 @@ paths:
         - $ref: '#/components/parameters/_global___query.error_trace'
         - $ref: '#/components/parameters/_global___query.source'
         - $ref: '#/components/parameters/_global___query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/search_shards'
       responses:
         '200':
           $ref: '#/components/responses/search_shards___200'
@@ -12067,7 +12726,7 @@ paths:
       operationId: explain.0
       x-operation-group: explain
       x-version-added: '1.0'
-      description: Returns information about why a specific matches (or doesn't match) a query.
+      description: Returns information about why a specific document matches (or doesn't match) a query.
       externalDocs:
         url: https://opensearch.org/docs/latest/api-reference/explain/
       parameters:
@@ -12099,7 +12758,7 @@ paths:
       operationId: explain.1
       x-operation-group: explain
       x-version-added: '1.0'
-      description: Returns information about why a specific matches (or doesn't match) a query.
+      description: Returns information about why a specific document matches (or doesn't match) a query.
       externalDocs:
         url: https://opensearch.org/docs/latest/api-reference/explain/
       parameters:
@@ -12865,6 +13524,8 @@ paths:
         - $ref: '#/components/parameters/_global___query.error_trace'
         - $ref: '#/components/parameters/_global___query.source'
         - $ref: '#/components/parameters/_global___query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/search_shards'
       responses:
         '200':
           $ref: '#/components/responses/search_shards___200'
@@ -12888,6 +13549,8 @@ paths:
         - $ref: '#/components/parameters/_global___query.error_trace'
         - $ref: '#/components/parameters/_global___query.source'
         - $ref: '#/components/parameters/_global___query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/search_shards'
       responses:
         '200':
           $ref: '#/components/responses/search_shards___200'
@@ -16261,7 +16924,7 @@ components:
     bulk_stream___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -16348,7 +17011,7 @@ components:
     bulk___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___Routing'
       style: form
@@ -18314,7 +18977,7 @@ components:
       name: local
       description: |-
         When `true`, the request retrieves information from the local node only.
-        When `false, information is retrieved from the cluster manager node.
+        When `false`, information is retrieved from the cluster manager node.
       schema:
         type: boolean
         default: false
@@ -18984,7 +19647,7 @@ components:
     count___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -19085,7 +19748,7 @@ components:
     create___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -19393,7 +20056,7 @@ components:
     delete_by_query___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -19592,7 +20255,7 @@ components:
     delete___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -19909,7 +20572,7 @@ components:
     explain___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -20082,6 +20745,30 @@ components:
       name: validation
       schema:
         $ref: '#/components/schemas/flow_framework.common___Validation'
+    geospatial.delete_ip2geo_datasource___path.name:
+      name: name
+      in: path
+      required: true
+      schema:
+        type: string
+    geospatial.get_ip2geo_datasource___path.name:
+      name: name
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/_common___StringOrStringArray'
+    geospatial.put_ip2geo_datasource_settings___path.name:
+      name: name
+      in: path
+      required: true
+      schema:
+        type: string
+    geospatial.put_ip2geo_datasource___path.name:
+      name: name
+      in: path
+      required: true
+      schema:
+        type: string
     get_script___path.id:
       in: path
       name: id
@@ -20110,7 +20797,7 @@ components:
     get_source___path.id:
       in: path
       name: id
-      description: Unique identifier of the document.
+      description: The unique identifier of the document.
       required: true
       schema:
         $ref: '#/components/schemas/_common___Id'
@@ -20118,7 +20805,7 @@ components:
     get_source___path.index:
       in: path
       name: index
-      description: Name of the index that contains the document.
+      description: The name of the index that contains the document.
       required: true
       schema:
         $ref: '#/components/schemas/_common___IndexName'
@@ -20190,7 +20877,7 @@ components:
     get___path.id:
       in: path
       name: id
-      description: Unique identifier of the document.
+      description: The unique identifier of the document.
       required: true
       schema:
         $ref: '#/components/schemas/_common___Id'
@@ -20198,7 +20885,7 @@ components:
     get___path.index:
       in: path
       name: index
-      description: Name of the index that contains the document.
+      description: The name of the index that contains the document.
       required: true
       schema:
         $ref: '#/components/schemas/_common___IndexName'
@@ -20351,7 +21038,7 @@ components:
     index___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -23865,6 +24552,34 @@ components:
         type: boolean
         default: false
         description: Verbose mode. Display column headers.
+    ltr.clear_cache___path.store:
+      name: store
+      in: path
+      description: The name of the feature store for which to clear the cache.
+      schema:
+        type: string
+      required: true
+    ltr.create_store___path.store:
+      name: store
+      in: path
+      description: The name of the feature store.
+      schema:
+        type: string
+      required: true
+    ltr.delete_store___path.store:
+      name: store
+      in: path
+      description: The name of the feature store.
+      schema:
+        type: string
+      required: true
+    ltr.get_store___path.store:
+      name: store
+      in: path
+      description: The name of the feature store.
+      schema:
+        type: string
+      required: true
     ltr.stats___path.node_id:
       name: node_id
       in: path
@@ -23954,7 +24669,7 @@ components:
     mget___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -24436,7 +25151,7 @@ components:
     mtermvectors___path.index:
       in: path
       name: index
-      description: Name of the index that contains the documents.
+      description: The name of the index that contains the document.
       required: true
       schema:
         $ref: '#/components/schemas/_common___IndexName'
@@ -24452,16 +25167,13 @@ components:
     mtermvectors___query.fields:
       in: query
       name: fields
-      description: |-
-        Comma-separated list or wildcard expressions of fields to include in the statistics.
-        Used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.
       schema:
         $ref: '#/components/schemas/_common___Fields'
       style: form
     mtermvectors___query.ids:
       in: query
       name: ids
-      description: A comma-separated list of documents ids. You must define ids as parameter or set "ids" or "docs" in the request body
+      description: A comma-separated list of documents IDs. You must provide either the `docs` field in the request body or specify `ids` as a query parameter or in the request body.
       schema:
         type: array
         items:
@@ -24495,11 +25207,11 @@ components:
       in: query
       name: preference
       description: |-
-        Specifies the node or shard the operation should be performed on.
-        Random by default.
+        Specifies the node or shard on which the operation should be performed. 
+        See [preference query parameter]({{site.url}}{{site.baseurl}}/api-reference/search-apis/search/#the-preference-query-parameter) for a list of available options. 
+        By default the requests are routed randomly to available shard copies (primary or replica), with no guarantee of consistency across repeated queries.
       schema:
         type: string
-        default: random
       style: form
     mtermvectors___query.realtime:
       in: query
@@ -24512,7 +25224,7 @@ components:
     mtermvectors___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -24534,7 +25246,7 @@ components:
     mtermvectors___query.version_type:
       in: query
       name: version_type
-      description: Specific version type.
+      description: The specific version type.
       schema:
         $ref: '#/components/schemas/_common___VersionType'
       style: form
@@ -24553,8 +25265,60 @@ components:
         type: string
         enum:
           - cluster_version
+          - comb_arithmetic_executions
+          - comb_arithmetic_processors
+          - comb_geometric_executions
+          - comb_geometric_processors
+          - comb_harmonic_executions
+          - comb_harmonic_processors
+          - comb_rrf_executions
+          - comb_rrf_processors
+          - hybrid_query_requests
+          - hybrid_query_with_filter_requests
+          - hybrid_query_with_inner_hits_requests
+          - hybrid_query_with_pagination_requests
+          - neural_query_against_knn_requests
+          - neural_query_against_semantic_dense_requests
+          - neural_query_against_semantic_sparse_requests
+          - neural_query_enricher_executions
+          - neural_query_enricher_processors
+          - neural_query_requests
+          - neural_sparse_query_requests
+          - neural_sparse_two_phase_executions
+          - neural_sparse_two_phase_processors
+          - norm_l2_executions
+          - norm_l2_processors
+          - norm_minmax_executions
+          - norm_minmax_processors
+          - norm_zscore_executions
+          - norm_zscore_processors
+          - normalization_processor_executions
+          - normalization_processors
+          - rank_based_normalization_processor_executions
+          - rank_based_normalization_processors
+          - rerank_by_field_executions
+          - rerank_by_field_processors
+          - rerank_ml_executions
+          - rerank_ml_processors
+          - semantic_field_chunking_executions
+          - semantic_field_executions
+          - semantic_highlighting_request_count
+          - skip_existing_executions
+          - skip_existing_processors
+          - sparse_encoding_executions
+          - sparse_encoding_processors
+          - text_chunking_delimiter_executions
+          - text_chunking_delimiter_processors
+          - text_chunking_executions
+          - text_chunking_fixed_char_length_executions
+          - text_chunking_fixed_char_length_processors
+          - text_chunking_fixed_token_length_executions
+          - text_chunking_fixed_token_length_processors
+          - text_chunking_processors
           - text_embedding_executions
           - text_embedding_processors_in_pipelines
+          - text_image_embedding_executions
+          - text_image_embedding_processors
       required: true
     neural.stats___query.flat_stat_paths:
       in: query
@@ -24567,6 +25331,39 @@ components:
         type: boolean
         default: false
       style: form
+    neural.stats___query.include_all_nodes:
+      in: query
+      name: include_all_nodes
+      description: |-
+        When `true` includes aggregated statistics across all nodes in the `all_nodes` category.
+        When `false`, excludes the `all_nodes` category from the response.
+      schema:
+        type: boolean
+        default: true
+      style: form
+      x-version-added: '3.1'
+    neural.stats___query.include_individual_nodes:
+      in: query
+      name: include_individual_nodes
+      description: |-
+        When `true` includes statistics for individual nodes in the `nodes` category.
+        When `false`, excludes the `nodes` category from the response.
+      schema:
+        type: boolean
+        default: true
+      style: form
+      x-version-added: '3.1'
+    neural.stats___query.include_info:
+      in: query
+      name: include_info
+      description: |-
+        When `true` includes cluster-wide information in the `info` category.
+        When `false`, excludes the `info` category from the response.
+      schema:
+        type: boolean
+        default: true
+      style: form
+      x-version-added: '3.1'
     neural.stats___query.include_metadata:
       in: query
       name: include_metadata
@@ -25566,6 +26363,153 @@ components:
       description: Operation timeout.
       schema:
         $ref: '#/components/schemas/_common___Duration'
+    search_relevance.delete_experiments___path.experiment_id:
+      name: experiment_id
+      in: path
+      required: true
+      description: The experiment id
+      schema:
+        type: string
+    search_relevance.delete_judgments___path.judgment_id:
+      name: judgment_id
+      in: path
+      required: true
+      description: The judgment id
+      schema:
+        type: string
+    search_relevance.delete_query_sets___path.query_set_id:
+      name: query_set_id
+      in: path
+      required: true
+      description: The query set id
+      schema:
+        type: string
+    search_relevance.delete_search_configurations___path.search_configuration_id:
+      name: search_configuration_id
+      in: path
+      required: true
+      description: The search configuration id
+      schema:
+        type: string
+    search_relevance.get_experiments___path.experiment_id:
+      name: experiment_id
+      in: path
+      required: true
+      description: The experiment id
+      schema:
+        type: string
+    search_relevance.get_judgments___path.judgment_id:
+      name: judgment_id
+      in: path
+      required: true
+      description: The judgment id
+      schema:
+        type: string
+    search_relevance.get_node_stats___path.node_id:
+      name: node_id
+      in: path
+      required: true
+      description: The node id
+      schema:
+        type: string
+    search_relevance.get_node_stats___path.stat:
+      name: stat
+      in: path
+      required: true
+      description: The statistic to return
+      schema:
+        type: string
+    search_relevance.get_node_stats___query.flat_stat_paths:
+      name: flat_stat_paths
+      in: query
+      required: false
+      description: Requests flattened stat paths as keys
+      schema:
+        type: string
+    search_relevance.get_node_stats___query.include_all_nodes:
+      name: include_all_nodes
+      in: query
+      required: false
+      description: Whether to include all nodes
+      schema:
+        type: string
+    search_relevance.get_node_stats___query.include_individual_nodes:
+      name: include_individual_nodes
+      in: query
+      required: false
+      description: Whether to include individual nodes
+      schema:
+        type: string
+    search_relevance.get_node_stats___query.include_info:
+      name: include_info
+      in: query
+      required: false
+      description: Whether to include info
+      schema:
+        type: string
+    search_relevance.get_node_stats___query.include_metadata:
+      name: include_metadata
+      in: query
+      required: false
+      description: Whether to include metadata
+      schema:
+        type: string
+    search_relevance.get_query_sets___path.query_set_id:
+      name: query_set_id
+      in: path
+      required: true
+      description: The query set id
+      schema:
+        type: string
+    search_relevance.get_search_configurations___path.search_configuration_id:
+      name: search_configuration_id
+      in: path
+      required: true
+      description: The search configuration id
+      schema:
+        type: string
+    search_relevance.get_stats___path.stat:
+      name: stat
+      in: path
+      required: true
+      description: The statistic to return
+      schema:
+        type: string
+    search_relevance.get_stats___query.flat_stat_paths:
+      name: flat_stat_paths
+      in: query
+      required: false
+      description: Requests flattened stat paths as keys
+      schema:
+        type: string
+    search_relevance.get_stats___query.include_all_nodes:
+      name: include_all_nodes
+      in: query
+      required: false
+      description: Whether to include all nodes
+      schema:
+        type: string
+    search_relevance.get_stats___query.include_individual_nodes:
+      name: include_individual_nodes
+      in: query
+      required: false
+      description: Whether to include individual nodes
+      schema:
+        type: string
+    search_relevance.get_stats___query.include_info:
+      name: include_info
+      in: query
+      required: false
+      description: Whether to include info
+      schema:
+        type: string
+    search_relevance.get_stats___query.include_metadata:
+      name: include_metadata
+      in: query
+      required: false
+      description: Whether to include metadata
+      schema:
+        type: string
     search_shards___path.index:
       in: path
       name: index
@@ -25623,7 +26567,7 @@ components:
     search_shards___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -25715,7 +26659,7 @@ components:
     search_template___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -26016,7 +26960,7 @@ components:
     search___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -26396,9 +27340,7 @@ components:
       in: query
       description: Whether to include all domain names in the response.
       schema:
-        type:
-          - boolean
-          - string
+        $ref: '#/components/schemas/_common___StringifiedBoolean'
       required: false
     security.get_tenant___path.tenant:
       name: tenant
@@ -27191,7 +28133,7 @@ components:
     termvectors___path.id:
       in: path
       name: id
-      description: Unique identifier of the document.
+      description: The unique identifier of the document.
       required: true
       schema:
         $ref: '#/components/schemas/_common___Id'
@@ -27199,7 +28141,7 @@ components:
     termvectors___path.index:
       in: path
       name: index
-      description: Name of the index that contains the document.
+      description: The name of the index that contains the document.
       required: true
       schema:
         $ref: '#/components/schemas/_common___IndexName'
@@ -27215,9 +28157,6 @@ components:
     termvectors___query.fields:
       in: query
       name: fields
-      description: |-
-        Comma-separated list or wildcard expressions of fields to include in the statistics.
-        Used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.
       schema:
         $ref: '#/components/schemas/_common___Fields'
       style: form
@@ -27249,11 +28188,11 @@ components:
       in: query
       name: preference
       description: |-
-        Specifies the node or shard the operation should be performed on.
-        Random by default.
+        Specifies the node or shard on which the operation should be performed. 
+        See [preference query parameter]({{site.url}}{{site.baseurl}}/api-reference/search-apis/search/#the-preference-query-parameter) for a list of available options. 
+        By default the requests are routed randomly to available shard copies (primary or replica), with no guarantee of consistency across repeated queries.
       schema:
         type: string
-        default: random
       style: form
     termvectors___query.realtime:
       in: query
@@ -27266,7 +28205,7 @@ components:
     termvectors___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -27288,7 +28227,7 @@ components:
     termvectors___query.version_type:
       in: query
       name: version_type
-      description: Specific version type.
+      description: The specific version type.
       schema:
         $ref: '#/components/schemas/_common___VersionType'
       style: form
@@ -27596,7 +28535,7 @@ components:
     update_by_query___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -27804,7 +28743,7 @@ components:
     update___query.routing:
       in: query
       name: routing
-      description: Custom value used to route operations to a specific shard.
+      description: A custom value used to route operations to a specific shard.
       schema:
         $ref: '#/components/schemas/_common___RoutingInQueryString'
       style: form
@@ -28071,6 +29010,30 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/flow_framework.common___FlowFrameworkUpdate'
+    geospatial.geojson_upload_post:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/geospatial._common___GeoJSONRequest'
+    geospatial.geojson_upload_put:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/geospatial._common___GeoJSONRequest'
+    geospatial.put_ip2geo_datasource:
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/geospatial._common___PutIP2GeoDataSourceRequest'
+    geospatial.put_ip2geo_datasource_settings:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/geospatial._common___PutIP2GeoDataSourceRequest'
     index:
       content:
         application/json:
@@ -29689,6 +30652,150 @@ components:
           schema:
             $ref: '#/components/schemas/search_pipeline._common___SearchPipelineStructure'
       required: true
+    search_relevance.post_query_sets:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              sampling:
+                type: string
+              querySetSize:
+                type: integer
+    search_relevance.put_experiments:
+      content:
+        application/json:
+          schema:
+            anyOf:
+              - type: object
+                description: The schema for a pointwise and hybrid optimizer experiment
+                properties:
+                  querySetId:
+                    type: string
+                  searchConfigurationList:
+                    type: array
+                    items:
+                      type: string
+                  judgmentList:
+                    type: array
+                    items:
+                      type: string
+                  size:
+                    type: integer
+                  type:
+                    type: string
+              - type: object
+                description: The schema for a pairwise experiment
+                properties:
+                  querySetId:
+                    type: string
+                  searchConfigurationList:
+                    type: array
+                    items:
+                      type: string
+                  size:
+                    type: integer
+                  type:
+                    type: string
+    search_relevance.put_judgments:
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - type: object
+                description: The schema for a LLM judgment
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  modelId:
+                    type: string
+                  querySetId:
+                    type: string
+                  searchConfigurationList:
+                    type: array
+                    items:
+                      type: string
+                  size:
+                    type: integer
+                  ignoreFailure:
+                    type: boolean
+                  contextFields:
+                    type: array
+                    items:
+                      type: string
+              - type: object
+                description: The schema for a UBI judgment
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  clickModel:
+                    type: string
+                  maxRank:
+                    type: integer
+              - type: object
+                description: The schema for an import judgment
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  type:
+                    type: string
+                  judgmentRatings:
+                    type: array
+                    items:
+                      type: object
+    search_relevance.put_query_sets:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              sampling:
+                type: string
+              querySetQueries:
+                type: array
+                items:
+                  type: object
+    search_relevance.put_search_configurations:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              index:
+                type: string
+              query:
+                type: string
+              searchPipeline:
+                type: string
+    search_shards:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              slice:
+                $ref: '#/components/schemas/_common___SlicedScroll'
+            x-version-added: '2.19'
     search_template:
       content:
         application/json:
@@ -29788,6 +30895,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29796,6 +30904,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29804,6 +30913,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29812,6 +30922,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29820,6 +30931,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29828,11 +30940,15 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/security._common___PatchOperations'
+            title: operations
+            type: array
+            items:
+              $ref: '#/components/schemas/security._common___PatchOperation'
     security.patch_distinguished_names:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29841,6 +30957,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29849,6 +30966,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29857,6 +30975,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29865,6 +30984,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29873,6 +30993,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29881,6 +31002,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29889,6 +31011,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -29897,6 +31020,7 @@ components:
       content:
         application/json:
           schema:
+            title: operations
             type: array
             items:
               $ref: '#/components/schemas/security._common___PatchOperation'
@@ -30912,18 +32036,18 @@ components:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              _nodes:
-                $ref: '#/components/schemas/_common___NodeStatistics'
-              cluster_name:
-                $ref: '#/components/schemas/_common___Name'
-              dangling_indices:
-                type: array
-                items:
-                  $ref: '#/components/schemas/dangling_indices.list_dangling_indices___DanglingIndex'
-            required:
-              - dangling_indices
+            allOf:
+              - $ref: '#/components/schemas/nodes._common___NodesResponseBase'
+              - type: object
+                properties:
+                  cluster_name:
+                    $ref: '#/components/schemas/_common___Name'
+                  dangling_indices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/dangling_indices.list_dangling_indices___DanglingIndex'
+                required:
+                  - dangling_indices
       description: ''
     delete_all_pits___200:
       content:
@@ -31291,6 +32415,72 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/flow_framework.errors___TemplateNotFoundError'
+    geospatial.delete_ip2geo_datasource___200:
+      description: Provides information for deleting IP2Geo data source.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_common___AcknowledgedResponseBase'
+    geospatial.delete_ip2geo_datasource___404:
+      description: Invalid request for deleting a data source.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
+    geospatial.geojson_upload_post___200:
+      description: Provides information for uploading `GeoJSON` result.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/geospatial._common___GeoSpatialGeojsonUploadResponse'
+    geospatial.geojson_upload_post___400:
+      description: Invalid request for uploading `GeoJSON` result.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
+    geospatial.geojson_upload_put___200:
+      description: Provides information for uploading `GeoJSON` result.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/geospatial._common___GeoSpatialGeojsonUploadResponse'
+    geospatial.get_ip2geo_datasource___200:
+      description: Provides information for getting IP2Geo data source.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/geospatial._common___GetDataSourceResponse'
+    geospatial.get_upload_stats___200:
+      description: Provides information for getting all stats for upload.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/geospatial._common___GeoSpatialUploadStats'
+    geospatial.put_ip2geo_datasource_settings___200:
+      description: Acknowledged response when create, delete or update a data source.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_common___AcknowledgedResponseBase'
+    geospatial.put_ip2geo_datasource_settings___404:
+      description: Invalid request for updating a data source setting.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
+    geospatial.put_ip2geo_datasource___200:
+      description: Provides information for deleting IP2Geo data source.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_common___AcknowledgedResponseBase'
+    geospatial.put_ip2geo_datasource___400:
+      description: Invalid request for creating a data source.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
     get_all_pits___200:
       content:
         application/json:
@@ -32251,12 +33441,66 @@ components:
                 items:
                   $ref: '#/components/schemas/cat.shards___ShardsRecord'
       description: ''
+    ltr.cache_stats___200:
+      description: Returns cache statistics for all feature stores.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ltr._common___CacheStatsResponse'
+    ltr.clear_cache___200:
+      description: Successfully cleared the feature store cache.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ltr._common___AcknowledgedResponse'
+    ltr.create_default_store___200:
+      description: Successfully created the default feature store.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ltr._common___AcknowledgedResponse'
+    ltr.create_store___200:
+      description: Successfully created the feature store.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ltr._common___AcknowledgedResponse'
+    ltr.delete_default_store___200:
+      description: Successfully deleted the default feature store.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ltr._common___AcknowledgedResponse'
+    ltr.delete_store___200:
+      description: Successfully deleted the feature store.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ltr._common___AcknowledgedResponse'
+    ltr.get_store___200:
+      description: Returns information about the store existence.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ltr._common___StoreExistsResponse'
+    ltr.get_store___404:
+      description: The store does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ltr._common___StoreExistsResponse'
+    ltr.list_stores___200:
+      description: Returns a list of available feature stores.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ltr._common___ListStoresResponse'
     ltr.stats___200:
+      description: Provides information about the current status of the LTR plugin.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ltr._common___Stats'
-      description: ''
     mget___200:
       content:
         application/json:
@@ -33359,6 +34603,122 @@ components:
             properties:
               acknowledged:
                 type: boolean
+      description: ''
+    search_relevance.delete_experiments___200:
+      content:
+        application/json:
+          schema:
+            type: object
+      description: ''
+    search_relevance.delete_judgments___200:
+      content:
+        application/json:
+          schema:
+            type: object
+      description: ''
+    search_relevance.delete_query_sets___200:
+      content:
+        application/json:
+          schema:
+            type: object
+      description: ''
+    search_relevance.delete_search_configurations___200:
+      content:
+        application/json:
+          schema:
+            type: object
+      description: ''
+    search_relevance.get_experiments___200:
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/search_relevance._common___Experiment'
+              - $ref: '#/components/schemas/search_relevance._common___GenericObject'
+      description: ''
+    search_relevance.get_judgments___200:
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/search_relevance._common___Judgment'
+              - $ref: '#/components/schemas/search_relevance._common___GenericObject'
+      description: ''
+    search_relevance.get_node_stats___200:
+      content:
+        application/json:
+          schema:
+            type: object
+      description: ''
+    search_relevance.get_query_sets___200:
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/search_relevance._common___QuerySet'
+              - $ref: '#/components/schemas/search_relevance._common___GenericObject'
+      description: ''
+    search_relevance.get_search_configurations___200:
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/search_relevance._common___SearchConfiguration'
+              - $ref: '#/components/schemas/search_relevance._common___GenericObject'
+      description: ''
+    search_relevance.get_stats___200:
+      content:
+        application/json:
+          schema:
+            type: object
+      description: ''
+    search_relevance.post_query_sets___200:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              query_set_id:
+                type: string
+              query_set_result:
+                type: string
+      description: ''
+    search_relevance.put_experiments___200:
+      content:
+        application/json:
+          schema:
+            type: object
+      description: ''
+    search_relevance.put_judgments___200:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              judgment_id:
+                type: string
+      description: ''
+    search_relevance.put_query_sets___200:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              query_set_id:
+                type: string
+              query_set_result:
+                type: string
+      description: ''
+    search_relevance.put_search_configurations___200:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              search_configuration_id:
+                type: string
+              search_configuration_result:
+                type: string
       description: ''
     search_shards___200:
       content:
@@ -35281,6 +36641,9 @@ components:
       required:
         - memory_size_in_bytes
     _common___Fields:
+      description: |-
+        A comma-separated list or a wildcard expression specifying the fields to include in the statistics.
+        Used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.
       oneOf:
         - $ref: '#/components/schemas/_common___Field'
         - type: array
@@ -37261,6 +38624,7 @@ components:
       oneOf:
         - type: integer
         - type: string
+          pattern: ^[+-]?\d+$
     _common___StringifiedLong:
       oneOf:
         - type: integer
@@ -37475,10 +38839,10 @@ components:
       oneOf:
         - type: string
           const: external
-          description: The version number must be higher than the current version.
+          description: The version number must be greater than the current version.
         - type: string
           const: external_gte
-          description: The version number must be higher than or equal to the current version.
+          description: The version number must be greater than or equal to the current version.
         - type: string
           const: force
           description: The version number is forced to be the given value.
@@ -37499,18 +38863,13 @@ components:
         - type: string
           const: all
           description: Wait for all shards to be active.
-        - type: string
-          not:
-            type: string
-            const: all
-          description: A numeric value greater than or equal to 0
         - type: 'null'
           description: null represents the default value (which defaults to one shard copy).
     _common___WaitForActiveShards:
       description: Waits until the specified number of shards is active before returning a response. Use `all` for all shards.
       oneOf:
         - title: count
-          type: integer
+          $ref: '#/components/schemas/_common___StringifiedInteger'
           description: The number of active shards to wait for.
         - title: option
           $ref: '#/components/schemas/_common___WaitForActiveShardOptions'
@@ -40214,7 +41573,7 @@ components:
         - $ref: '#/components/schemas/_common.aggregations___AggregateBase'
         - type: object
           properties:
-            value: true
+            value: {}
           required:
             - value
     _common.aggregations___ScriptedMetricAggregation:
@@ -45685,6 +47044,10 @@ components:
           maxProperties: 1
         span_within:
           $ref: '#/components/schemas/_common.query_dsl___SpanWithinQuery'
+        template:
+          description: Return documents using a template query contains placeholders that are resolved by search request processors during query execution.
+          type: object
+          additionalProperties: true
         term:
           description: |-
             Returns documents that contain an exact term in a provided field.
@@ -46251,11 +47614,13 @@ components:
     _common.query_dsl___TermsQuery:
       allOf:
         - $ref: '#/components/schemas/_common.query_dsl___QueryBase'
-        - $ref: '#/components/schemas/_common.query_dsl___ValueType'
         - type: object
           properties:
             _name: {}
             boost: {}
+            value_type:
+              description: Specifies the types of values used for filtering. Valid values are `default` and `bitmap`. Default is `default`.
+              $ref: '#/components/schemas/_common.query_dsl___TermsQueryValueType'
           propertyNames:
             title: field
             type: string
@@ -46271,6 +47636,11 @@ components:
             $ref: '#/components/schemas/_common___FieldValue'
         - title: lookup
           $ref: '#/components/schemas/_common.query_dsl___TermsLookup'
+    _common.query_dsl___TermsQueryValueType:
+      type: string
+      enum:
+        - bitmap
+        - default
     _common.query_dsl___TermsSetQuery:
       allOf:
         - $ref: '#/components/schemas/_common.query_dsl___QueryBase'
@@ -46304,15 +47674,6 @@ components:
               type: string
           required:
             - value
-    _common.query_dsl___ValueType:
-      type: object
-      properties:
-        value_type:
-          description: Specifies the types of values used for filtering. Valid values are `default` and `bitmap`. Default is `default`.
-          type: string
-          enum:
-            - bitmap
-            - default
     _common.query_dsl___WildcardQuery:
       oneOf:
         - title: value
@@ -46560,7 +47921,6 @@ components:
               format: double
       required:
         - description
-        - details
         - value
     _core.field_caps___FieldCapability:
       type: object
@@ -48386,9 +49746,6 @@ components:
           type: object
           additionalProperties:
             type: object
-        max_score:
-          type: number
-          format: float
         num_reduce_phases:
           type: integer
           format: int32
@@ -48974,16 +50331,16 @@ components:
             type: string
       description: The search definition using the Query DSL.
     asynchronous_search._common___StatsResponse:
-      type: object
-      properties:
-        _nodes:
-          $ref: '#/components/schemas/_common___NodeStatistics'
-        cluster_name:
-          type: string
-        nodes:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/asynchronous_search._common___NodesStats'
+      allOf:
+        - $ref: '#/components/schemas/nodes._common___NodesResponseBase'
+        - type: object
+          properties:
+            cluster_name:
+              type: string
+            nodes:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/asynchronous_search._common___NodesStats'
     cat.aliases___AliasesRecord:
       type: object
       properties:
@@ -51550,6 +52907,12 @@ components:
           $ref: '#/components/schemas/_common___Duration'
         time_in_queue_millis:
           $ref: '#/components/schemas/_common___DurationValueUnitMillis'
+        time_in_execution:
+          $ref: '#/components/schemas/_common___Duration'
+          x-version-added: '3.1'
+        time_in_execution_millis:
+          $ref: '#/components/schemas/_common___DurationValueUnitMillis'
+          x-version-added: '3.1'
       required:
         - executing
         - insert_order
@@ -53131,6 +54494,367 @@ components:
           type: string
         code:
           type: integer
+    geospatial._common___Database:
+      type: object
+      properties:
+        provider:
+          type: string
+        sha256_hash:
+          type: string
+        updated_at_in_epoch_millis:
+          $ref: '#/components/schemas/_common___EpochTimeUnitMillis'
+        valid_for_in_days:
+          type: integer
+        fields:
+          type: array
+          items:
+            type: string
+    geospatial._common___DataSource:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/_common___Name'
+        state:
+          type: string
+          enum:
+            - AVAILABLE
+            - CREATE_FAILED
+            - CREATING
+            - DELETING
+          description: State of the data source.
+        endpoint:
+          type: string
+          description: URL endpoint for the data source.
+        update_interval_in_days:
+          type: integer
+          description: Update interval.
+        next_update_at_in_epoch_millis:
+          $ref: '#/components/schemas/_common___EpochTimeUnitMillis'
+        database:
+          type: object
+          $ref: '#/components/schemas/geospatial._common___Database'
+        update_stats:
+          type: object
+          $ref: '#/components/schemas/geospatial._common___UpdateStats'
+      required:
+        - database
+        - endpoint
+        - name
+        - next_update_at_in_epoch_millis
+        - state
+        - update_interval_in_days
+        - update_stats
+    geospatial._common___Envelope:
+      type: array
+      minItems: 2
+      maxItems: 2
+      items:
+        $ref: '#/components/schemas/geospatial._common___PointCoordinates'
+      description: |-
+        An envelope specified by upper-left and lower-right points
+        [[`minLon`, `maxLat`], [`maxLon`, `minLat`]].
+    geospatial._common___GeoJSONData:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - Feature
+            - FeatureCollection
+        geometry:
+          $ref: '#/components/schemas/geospatial._common___Geometry'
+        properties:
+          type: object
+      required:
+        - geometry
+        - type
+    geospatial._common___GeoJSONRequest:
+      type: object
+      properties:
+        index:
+          $ref: '#/components/schemas/_common___IndexName'
+        field:
+          type: string
+          default: location
+          description: Field name for the geospatial data.
+        type:
+          type: string
+          description: Field type for the geospatial data.
+          enum:
+            - geo_point
+            - geo_shape
+        data:
+          type: array
+          maxItems: 10000
+          description: Array of GeoJSON features.
+          items:
+            $ref: '#/components/schemas/geospatial._common___GeoJSONData'
+      required:
+        - data
+        - index
+        - type
+    geospatial._common___Geometry:
+      oneOf:
+        - $ref: '#/components/schemas/geospatial._common___GeoShapes'
+        - $ref: '#/components/schemas/geospatial._common___GeometryCollection'
+    geospatial._common___GeometryCollection:
+      type: object
+      required:
+        - geometries
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - GeometryCollection
+        geometries:
+          type: array
+          maxItems: 100
+          description: Array of geometry objects.
+          items:
+            $ref: '#/components/schemas/geospatial._common___Geometry'
+    geospatial._common___GeoShapes:
+      oneOf:
+        - $ref: '#/components/schemas/geospatial._common___Point'
+        - $ref: '#/components/schemas/geospatial._common___MultiPoint'
+        - $ref: '#/components/schemas/geospatial._common___LineString'
+        - $ref: '#/components/schemas/geospatial._common___MultiLineString'
+        - $ref: '#/components/schemas/geospatial._common___Polygon'
+        - $ref: '#/components/schemas/geospatial._common___MultiPolygon'
+        - $ref: '#/components/schemas/geospatial._common___Envelope'
+      description: |-
+        GeoJSON `geoshape` types supported by OpenSearch.
+        For more details, see: https://docs.opensearch.org/docs/latest/field-types/supported-field-types/geo-shape.
+    geospatial._common___GeoSpatialGeojsonUploadResponse:
+      type: object
+      properties:
+        took:
+          $ref: '#/components/schemas/_common___DurationValueUnitMillis'
+        errors:
+          type: boolean
+          description: Whether there were any errors.
+        total:
+          type: integer
+          description: Total number of features processed.
+        success:
+          type: integer
+          description: Number of features successfully uploaded.
+        failure:
+          type: integer
+          description: Number of features that failed to upload.
+      required:
+        - errors
+        - failure
+        - success
+        - took
+        - total
+    geospatial._common___GeoSpatialUploadStats:
+      type: object
+      properties:
+        total:
+          $ref: '#/components/schemas/geospatial._common___UploadStatsTotal'
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/geospatial._common___UploadStatsMetric'
+      required:
+        - metrics
+        - total
+    geospatial._common___GetDataSourceResponse:
+      type: object
+      properties:
+        datasources:
+          type: array
+          items:
+            $ref: '#/components/schemas/geospatial._common___DataSource'
+      required:
+        - datasources
+    geospatial._common___LineString:
+      type: object
+      required:
+        - coordinates
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - LineString
+        coordinates:
+          $ref: '#/components/schemas/geospatial._common___LineStringCoordinates'
+    geospatial._common___LineStringCoordinates:
+      type: array
+      minItems: 2
+      items:
+        $ref: '#/components/schemas/geospatial._common___PointCoordinates'
+      description: An array of Point coordinates forming a line.
+    geospatial._common___MultiLineString:
+      type: object
+      required:
+        - coordinates
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - MultiLineString
+        coordinates:
+          $ref: '#/components/schemas/geospatial._common___MultiLineStringCoordinates'
+    geospatial._common___MultiLineStringCoordinates:
+      type: array
+      items:
+        $ref: '#/components/schemas/geospatial._common___LineStringCoordinates'
+      description: An array of LineString coordinates.
+    geospatial._common___MultiPoint:
+      type: object
+      required:
+        - coordinates
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - MultiPoint
+        coordinates:
+          $ref: '#/components/schemas/geospatial._common___MultiPointCoordinates'
+    geospatial._common___MultiPointCoordinates:
+      type: array
+      items:
+        $ref: '#/components/schemas/geospatial._common___PointCoordinates'
+      description: An array of Point coordinates.
+    geospatial._common___MultiPolygon:
+      type: object
+      required:
+        - coordinates
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - MultiPolygon
+        coordinates:
+          $ref: '#/components/schemas/geospatial._common___MultiPolygonCoordinates'
+    geospatial._common___MultiPolygonCoordinates:
+      type: array
+      items:
+        $ref: '#/components/schemas/geospatial._common___PolygonCoordinates'
+      description: An array of Polygon coordinates.
+    geospatial._common___Point:
+      type: object
+      required:
+        - coordinates
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - Point
+        coordinates:
+          $ref: '#/components/schemas/geospatial._common___PointCoordinates'
+    geospatial._common___PointCoordinates:
+      type: array
+      minItems: 2
+      maxItems: 2
+      items:
+        type: number
+        minimum: -180
+        maximum: 180
+      description: |-
+        A Point coordinates array [longitude, latitude].
+        - longitude must be between -180 and 180
+        - latitude must be between -90 and 90.
+    geospatial._common___Polygon:
+      type: object
+      required:
+        - coordinates
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - Polygon
+        coordinates:
+          $ref: '#/components/schemas/geospatial._common___PolygonCoordinates'
+    geospatial._common___PolygonCoordinates:
+      type: array
+      items:
+        type: array
+        items:
+          $ref: '#/components/schemas/geospatial._common___PointCoordinates'
+        minItems: 4
+      description: |-
+        An array of linear ring coordinate arrays.
+        - First and last points must be the same to close the polygon
+        - Minimum 4 points required (first and last being the same).
+    geospatial._common___PutIP2GeoDataSourceRequest:
+      type: object
+      properties:
+        endpoint:
+          type: string
+          description: URL endpoint for the data source.
+          default: https://geoip.maps.opensearch.org/v1/geolite2-city/manifest.json
+        update_interval_in_days:
+          type: integer
+          description: Update interval in days.
+          default: 3
+    geospatial._common___UpdateStats:
+      type: object
+      properties:
+        last_succeeded_at_in_epoch_millis:
+          $ref: '#/components/schemas/_common___EpochTimeUnitMillis'
+        last_processing_time_in_millis:
+          $ref: '#/components/schemas/_common___EpochTimeUnitMillis'
+    geospatial._common___UploadStatsMetric:
+      type: object
+      properties:
+        node_id:
+          $ref: '#/components/schemas/_common___NodeId'
+        id:
+          $ref: '#/components/schemas/_common___Id'
+        type:
+          type: string
+          description: Type of upload (such as "GeoJSON").
+        upload:
+          type: integer
+          description: Number of features in this upload.
+        success:
+          type: integer
+          description: Number of successful features in this upload.
+        failed:
+          type: integer
+          description: Number of failed features in this upload.
+        duration:
+          $ref: '#/components/schemas/_common___DurationValueUnitMillis'
+      required:
+        - duration
+        - failed
+        - id
+        - node_id
+        - success
+        - type
+        - upload
+    geospatial._common___UploadStatsTotal:
+      type: object
+      properties:
+        request_count:
+          type: integer
+          description: Total number of upload requests.
+        upload:
+          type: integer
+          description: Total number of uploads.
+        success:
+          type: integer
+          description: Total successful uploads.
+        failed:
+          type: integer
+          description: Total failed uploads.
+        duration:
+          $ref: '#/components/schemas/_common___DurationValueUnitMillis'
+      required:
+        - duration
+        - failed
+        - request_count
+        - success
+        - upload
     indices._common___Alias:
       type: object
       description: The index alias configuration.
@@ -53963,6 +55687,8 @@ components:
           $ref: '#/components/schemas/indices._common___SearchSlowlog'
         throttled:
           $ref: '#/components/schemas/_common___StringifiedBoolean'
+        star_tree_index:
+          $ref: '#/components/schemas/indices._common___IndexSettingsSearchStarTreeIndex'
     indices._common___IndexSettingsSearchConcurrent:
       type: object
       description: The configuration for concurrent search operations.
@@ -53976,6 +55702,11 @@ components:
         mode:
           type: string
           description: The mode of concurrent segment search.
+        enabled:
+          $ref: '#/components/schemas/_common___StringifiedBoolean'
+    indices._common___IndexSettingsSearchStarTreeIndex:
+      type: object
+      properties:
         enabled:
           $ref: '#/components/schemas/_common___StringifiedBoolean'
     indices._common___IndexSettingsSimilarity:
@@ -57419,22 +59150,22 @@ components:
         script_compilation_errors:
           type: number
     knn._common___Stats:
-      type: object
-      properties:
-        _nodes:
-          $ref: '#/components/schemas/_common___NodeStatistics'
-        cluster_name:
-          $ref: '#/components/schemas/_common___Name'
-        circuit_breaker_triggered:
-          type: boolean
-        model_index_status:
-          oneOf:
-            - $ref: '#/components/schemas/_common___HealthStatus'
-            - type: 'null'
-        nodes:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/knn._common___NodeStats'
+      allOf:
+        - $ref: '#/components/schemas/nodes._common___NodesResponseBase'
+        - type: object
+          properties:
+            cluster_name:
+              $ref: '#/components/schemas/_common___Name'
+            circuit_breaker_triggered:
+              type: boolean
+            model_index_status:
+              oneOf:
+                - $ref: '#/components/schemas/_common___HealthStatus'
+                - type: 'null'
+            nodes:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/knn._common___NodeStats'
     knn._common___TrainedModel:
       type: object
       properties:
@@ -57465,6 +59196,39 @@ components:
         - dimension
         - training_field
         - training_index
+    ltr._common___AcknowledgedResponse:
+      type: object
+      properties:
+        acknowledged:
+          type: boolean
+          description: Indicates whether the request was acknowledged.
+        shards_acknowledged:
+          type: boolean
+          description: Indicates whether the required active shards were acknowledged.
+        index:
+          type: string
+          description: The name of the index.
+    ltr._common___CacheAllStats:
+      type: object
+      description: Aggregate cache statistics across all nodes.
+      properties:
+        total:
+          $ref: '#/components/schemas/ltr._common___CacheItemStats'
+        features:
+          $ref: '#/components/schemas/ltr._common___CacheItemStats'
+        featuresets:
+          $ref: '#/components/schemas/ltr._common___CacheItemStats'
+        models:
+          $ref: '#/components/schemas/ltr._common___CacheItemStats'
+    ltr._common___CacheItemStats:
+      type: object
+      properties:
+        ram:
+          type: integer
+          description: Memory usage in bytes.
+        count:
+          type: integer
+          description: Count of cached items.
     ltr._common___CacheStat:
       type: object
       properties:
@@ -57487,6 +59251,44 @@ components:
           $ref: '#/components/schemas/ltr._common___CacheStat'
         model:
           $ref: '#/components/schemas/ltr._common___CacheStat'
+    ltr._common___CacheStatsResponse:
+      type: object
+      properties:
+        _nodes:
+          $ref: '#/components/schemas/_common___NodeStatistics'
+        cluster_name:
+          $ref: '#/components/schemas/_common___Name'
+        all:
+          $ref: '#/components/schemas/ltr._common___CacheAllStats'
+        stores:
+          type: object
+          description: Cache statistics by store.
+        nodes:
+          type: object
+          description: Cache statistics per node.
+          additionalProperties:
+            $ref: '#/components/schemas/ltr._common___NodeDetails'
+    ltr._common___ListStoresResponse:
+      type: object
+      properties:
+        stores:
+          type: object
+          description: Map of available feature stores.
+          additionalProperties:
+            $ref: '#/components/schemas/ltr._common___StoreDetails'
+      required:
+        - stores
+    ltr._common___NodeDetails:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Node name.
+        hostname:
+          type: string
+          description: Node hostname.
+        stats:
+          $ref: '#/components/schemas/ltr._common___NodeStatsDetails'
     ltr._common___NodeStats:
       type: object
       properties:
@@ -57496,21 +59298,54 @@ components:
           type: integer
         request_error_count:
           type: integer
+    ltr._common___NodeStatsDetails:
+      type: object
+      description: Cache statistics for a node.
+      properties:
+        total:
+          $ref: '#/components/schemas/ltr._common___CacheItemStats'
+        features:
+          $ref: '#/components/schemas/ltr._common___CacheItemStats'
+        featuresets:
+          $ref: '#/components/schemas/ltr._common___CacheItemStats'
+        models:
+          $ref: '#/components/schemas/ltr._common___CacheItemStats'
     ltr._common___Stats:
+      allOf:
+        - $ref: '#/components/schemas/nodes._common___NodesResponseBase'
+        - type: object
+          properties:
+            cluster_name:
+              $ref: '#/components/schemas/_common___Name'
+            stores:
+              $ref: '#/components/schemas/ltr._common___StoreStats'
+            status:
+              type: string
+            nodes:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/ltr._common___NodeStats'
+    ltr._common___StoreDetails:
       type: object
       properties:
-        _nodes:
-          $ref: '#/components/schemas/_common___NodeStatistics'
-        cluster_name:
-          $ref: '#/components/schemas/_common___Name'
-        stores:
-          $ref: '#/components/schemas/ltr._common___StoreStats'
-        status:
+        store:
           type: string
-        nodes:
+          description: The name of the store.
+        index:
+          type: string
+          description: The index name for this store.
+        version:
+          type: integer
+          description: Store version.
+        counts:
           type: object
-          additionalProperties:
-            $ref: '#/components/schemas/ltr._common___NodeStats'
+          description: Count statistics for this store.
+    ltr._common___StoreExistsResponse:
+      type: object
+      properties:
+        exists:
+          type: boolean
+          description: Indicates whether the store exists.
     ltr._common___StoreStat:
       type: object
       properties:
@@ -59125,7 +60960,8 @@ components:
           type: string
         strict:
           type: boolean
-      additionalProperties: true
+      additionalProperties:
+        title: attributes
     ml._common___ToolItems:
       type: object
       properties:
@@ -59245,27 +61081,183 @@ components:
         processors.ingest.text_embedding_processors_in_pipelines:
           $ref: '#/components/schemas/neural._common___InfoCounterStat'
           x-version-added: '3.0'
+        processors.ingest.text_chunking_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.text_chunking_delimiter_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.text_chunking_fixed_token_length_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.text_chunking_fixed_char_length_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.sparse_encoding_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.text_image_embedding_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.skip_existing_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.normalization_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.norm_l2_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.norm_minmax_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.norm_zscore_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.rank_based_normalization_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.comb_geometric_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.comb_rrf_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.comb_harmonic_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.comb_arithmetic_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.rerank_ml_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.rerank_by_field_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.neural_sparse_two_phase_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        processors.search.neural_query_enricher_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
     neural._common___FlatNeuralNodeStats:
       type: object
       properties:
         processors.ingest.text_embedding_executions:
           $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
           x-version-added: '3.0'
+        processors.ingest.text_chunking_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.text_chunking_delimiter_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.text_chunking_fixed_token_length_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.text_chunking_fixed_char_length_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.semantic_field_chunking_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.sparse_encoding_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.text_image_embedding_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.skip_existing_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.ingest.semantic_field_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.normalization_processor_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.norm_l2_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.norm_minmax_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.norm_zscore_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.rank_based_normalization_processor_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.comb_geometric_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.comb_rrf_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.comb_harmonic_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.hybrid.comb_arithmetic_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.rerank_ml_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.rerank_by_field_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.neural_sparse_two_phase_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        processors.search.neural_query_enricher_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        query.hybrid.hybrid_query_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        query.hybrid.hybrid_query_with_pagination_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        query.hybrid.hybrid_query_with_filter_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        query.hybrid.hybrid_query_with_inner_hits_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        query.neural.neural_query_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        query.neural.neural_query_against_semantic_sparse_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        query.neural.neural_query_against_semantic_dense_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        query.neural.neural_query_against_knn_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        query.neural_sparse.neural_sparse_query_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        semantic_highlighting.semantic_highlighting_request_count:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
     neural._common___FlatNeuralStats:
-      type: object
-      properties:
-        _nodes:
-          $ref: '#/components/schemas/neural._common___NodesInfo'
-        cluster_name:
-          type: string
-        info:
-          $ref: '#/components/schemas/neural._common___FlatNeuralInfoStats'
-        all_nodes:
-          $ref: '#/components/schemas/neural._common___FlatNeuralNodeStats'
-        nodes:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/neural._common___FlatNeuralNodeStats'
+      allOf:
+        - $ref: '#/components/schemas/nodes._common___NodesResponseBase'
+        - type: object
+          properties:
+            cluster_name:
+              type: string
+            info:
+              $ref: '#/components/schemas/neural._common___FlatNeuralInfoStats'
+            all_nodes:
+              $ref: '#/components/schemas/neural._common___FlatNeuralNodeStats'
+            nodes:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/neural._common___FlatNeuralNodeStats'
     neural._common___InfoCounterStat:
       oneOf:
         - type: integer
@@ -59299,15 +61291,89 @@ components:
       properties:
         ingest:
           $ref: '#/components/schemas/neural._common___NestedNeuralInfoStatsProcessorsIngest'
+        search:
+          $ref: '#/components/schemas/neural._common___NestedNeuralInfoStatsProcessorsSearch'
     neural._common___NestedNeuralInfoStatsProcessorsIngest:
       type: object
       properties:
         text_embedding_processors_in_pipelines:
           $ref: '#/components/schemas/neural._common___InfoCounterStat'
           x-version-added: '3.0'
+        text_chunking_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        text_chunking_delimiter_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        text_chunking_fixed_token_length_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        text_chunking_fixed_char_length_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        sparse_encoding_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        text_image_embedding_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        skip_existing_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+    neural._common___NestedNeuralInfoStatsProcessorsSearch:
+      type: object
+      properties:
+        hybrid:
+          $ref: '#/components/schemas/neural._common___NestedNeuralInfoStatsProcessorsSearchHybrid'
+        rerank_ml_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        rerank_by_field_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        neural_sparse_two_phase_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        neural_query_enricher_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+    neural._common___NestedNeuralInfoStatsProcessorsSearchHybrid:
+      type: object
+      properties:
+        normalization_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        norm_l2_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        norm_minmax_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        norm_zscore_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        rank_based_normalization_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        comb_geometric_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        comb_rrf_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        comb_harmonic_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
+        comb_arithmetic_processors:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.1'
     neural._common___NestedNeuralNodeStats:
       type: object
       properties:
+        query:
+          $ref: '#/components/schemas/neural._common___NestedNeuralNodeStatsQuery'
+        semantic_highlighting:
+          $ref: '#/components/schemas/neural._common___NestedNeuralNodeStatsSemanticHighlighting'
         processors:
           $ref: '#/components/schemas/neural._common___NestedNeuralNodeStatsProcessors'
     neural._common___NestedNeuralNodeStatsProcessors:
@@ -59315,40 +61381,158 @@ components:
       properties:
         ingest:
           $ref: '#/components/schemas/neural._common___NestedNeuralNodeStatsProcessorsIngest'
+        search:
+          $ref: '#/components/schemas/neural._common___NestedNeuralNodeStatsProcessorsSearch'
     neural._common___NestedNeuralNodeStatsProcessorsIngest:
       type: object
       properties:
         text_embedding_executions:
           $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
           x-version-added: '3.0'
-    neural._common___NestedNeuralStats:
+        text_chunking_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        text_chunking_delimiter_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        text_chunking_fixed_token_length_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        text_chunking_fixed_char_length_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        semantic_field_chunking_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        sparse_encoding_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        text_image_embedding_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        skip_existing_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        semantic_field_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+    neural._common___NestedNeuralNodeStatsProcessorsSearch:
       type: object
       properties:
-        _nodes:
-          $ref: '#/components/schemas/neural._common___NodesInfo'
-        cluster_name:
-          type: string
-        info:
-          $ref: '#/components/schemas/neural._common___NestedNeuralInfoStats'
-        all_nodes:
-          $ref: '#/components/schemas/neural._common___NestedNeuralNodeStats'
-        nodes:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/neural._common___NestedNeuralNodeStats'
+        hybrid:
+          $ref: '#/components/schemas/neural._common___NestedNeuralNodeStatsProcessorsSearchHybrid'
+        neural_sparse_two_phase_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        neural_query_enricher_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        rerank_by_field_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        rerank_ml_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+    neural._common___NestedNeuralNodeStatsProcessorsSearchHybrid:
+      type: object
+      properties:
+        normalization_processor_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        norm_l2_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        norm_minmax_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        norm_zscore_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        rank_based_normalization_processor_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        comb_geometric_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        comb_rrf_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        comb_harmonic_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        comb_arithmetic_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+    neural._common___NestedNeuralNodeStatsQuery:
+      type: object
+      properties:
+        hybrid:
+          $ref: '#/components/schemas/neural._common___NestedNeuralNodeStatsQueryHybrid'
+        neural:
+          $ref: '#/components/schemas/neural._common___NestedNeuralNodeStatsQueryNeural'
+        neural_sparse:
+          $ref: '#/components/schemas/neural._common___NestedNeuralNodeStatsQueryNeuralSparse'
+    neural._common___NestedNeuralNodeStatsQueryHybrid:
+      type: object
+      properties:
+        hybrid_query_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        hybrid_query_with_pagination_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        hybrid_query_with_filter_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        hybrid_query_with_inner_hits_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+    neural._common___NestedNeuralNodeStatsQueryNeural:
+      type: object
+      properties:
+        neural_query_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        neural_query_against_semantic_sparse_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        neural_query_against_semantic_dense_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+        neural_query_against_knn_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+    neural._common___NestedNeuralNodeStatsQueryNeuralSparse:
+      type: object
+      properties:
+        neural_sparse_query_requests:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+    neural._common___NestedNeuralNodeStatsSemanticHighlighting:
+      type: object
+      properties:
+        semantic_highlighting_request_count:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.1'
+    neural._common___NestedNeuralStats:
+      allOf:
+        - $ref: '#/components/schemas/nodes._common___NodesResponseBase'
+        - type: object
+          properties:
+            cluster_name:
+              type: string
+            info:
+              $ref: '#/components/schemas/neural._common___NestedNeuralInfoStats'
+            all_nodes:
+              $ref: '#/components/schemas/neural._common___NestedNeuralNodeStats'
+            nodes:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/neural._common___NestedNeuralNodeStats'
     neural._common___NeuralStats:
-      oneOf:
+      anyOf:
         - $ref: '#/components/schemas/neural._common___NestedNeuralStats'
         - $ref: '#/components/schemas/neural._common___FlatNeuralStats'
-    neural._common___NodesInfo:
-      type: object
-      properties:
-        total:
-          type: integer
-        successful:
-          type: integer
-        failed:
-          type: integer
     neural._common___StatMetadata:
       type: object
       required:
@@ -59801,6 +61985,15 @@ components:
           $ref: '#/components/schemas/nodes.info___NodeInfoSearchRemote'
       required:
         - remote
+    nodes.info___NodeInfoSearchPipelineProcessor:
+      type: object
+      description: The search pipeline processor configuration.
+      properties:
+        type:
+          type: string
+          description: The type of search pipeline processor.
+      required:
+        - type
     nodes.info___NodeInfoSearchPipelines:
       type: object
       description: The search pipeline configuration.
@@ -59809,12 +62002,18 @@ components:
           type: array
           description: The list of response processors in the pipeline.
           items:
-            $ref: '#/components/schemas/nodes.info___NodeInfoIngestProcessor'
+            $ref: '#/components/schemas/nodes.info___NodeInfoSearchPipelineProcessor'
         request_processors:
           type: array
           description: The list of request processors in the pipeline.
           items:
-            $ref: '#/components/schemas/nodes.info___NodeInfoIngestProcessor'
+            $ref: '#/components/schemas/nodes.info___NodeInfoSearchPipelineProcessor'
+        phase_results_processors:
+          type: array
+          description: The list of phase results processors in the pipeline.
+          items:
+            $ref: '#/components/schemas/nodes.info___NodeInfoSearchPipelineProcessor'
+          x-version-added: '3.1'
     nodes.info___NodeInfoSearchRemote:
       description: The remote search connection configuration.
       type: object
@@ -63115,6 +65314,13 @@ components:
               $ref: '#/components/schemas/search_pipeline._common___NormalizationPhaseResultsProcessor'
           required:
             - normalization-processor
+        - type: object
+          title: score-ranker-processor
+          properties:
+            score-ranker-processor:
+              $ref: '#/components/schemas/search_pipeline._common___ScoreRankerPhaseResultsProcessor'
+          required:
+            - score-ranker-processor
     search_pipeline._common___RenameFieldResponseProcessor:
       type: object
       properties:
@@ -63292,6 +65498,28 @@ components:
       enum:
         - l2
         - min_max
+    search_pipeline._common___ScoreRankerCombination:
+      type: object
+      properties:
+        technique:
+          $ref: '#/components/schemas/search_pipeline._common___ScoreRankerCombinationTechnique'
+        rank_constant:
+          type: integer
+          format: int32
+          minimum: 1
+      required:
+        - technique
+    search_pipeline._common___ScoreRankerCombinationTechnique:
+      type: string
+      enum:
+        - rrf
+    search_pipeline._common___ScoreRankerPhaseResultsProcessor:
+      type: object
+      properties:
+        combination:
+          $ref: '#/components/schemas/search_pipeline._common___ScoreRankerCombination'
+      required:
+        - combination
     search_pipeline._common___SearchPipelineMap:
       type: object
       additionalProperties:
@@ -63382,6 +65610,89 @@ components:
           format: int32
         context_prefix:
           type: string
+    search_relevance._common___Experiment:
+      type: object
+      properties:
+        id:
+          type: string
+        timestamp:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        querySetId:
+          type: string
+        searchConfigurationList:
+          type: array
+          items:
+            type: string
+        judgmentList:
+          type: array
+          items:
+            type: string
+        size:
+          type: integer
+        results:
+          type: object
+    search_relevance._common___GenericObject:
+      type: object
+      properties:
+        took:
+          type: integer
+        timed_out:
+          type: boolean
+        _shards:
+          type: object
+        hits:
+          type: object
+    search_relevance._common___Judgment:
+      type: object
+      properties:
+        id:
+          type: string
+        timestamp:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+        metadata:
+          type: object
+        judgmentScores:
+          type: object
+    search_relevance._common___QuerySet:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        sampling:
+          type: string
+        timestamp:
+          type: string
+        querySetQueries:
+          type: object
+    search_relevance._common___SearchConfiguration:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        timestamp:
+          type: string
+        index:
+          type: string
+        query:
+          type: string
+        searchPipeline:
+          type: string
     security._common___AccountDetails:
       type: object
       properties:
@@ -63440,6 +65751,10 @@ components:
         requests:
           type: object
           description: An object with APIs as key and array of HTTP methods as values.
+          additionalProperties:
+            type: array
+            items:
+              type: string
     security._common___AuditConfig:
       type: object
       properties:
@@ -63534,6 +65849,8 @@ components:
         tenants:
           type: object
           description: The tenants the user has access to with `read-write` or `read-only` access indicators.
+          additionalProperties:
+            type: boolean
         principal:
           type:
             - 'null'
@@ -63558,18 +65875,6 @@ components:
         size_of_backendroles:
           type: string
           description: The size of the user's backend roles in bytes.
-    security._common___CertificateCountPerNode:
-      type: object
-      properties:
-        total:
-          type: number
-          description: The total number of nodes.
-        successful:
-          type: number
-          description: The number of nodes for which certificates can be fetched.
-        failed:
-          type: number
-          description: The number of nodes for which certificates could not be fetched.
     security._common___CertificatesDetail:
       type: object
       properties:
@@ -63805,19 +66110,17 @@ components:
           items:
             $ref: '#/components/schemas/security._common___CertificatesDetail'
     security._common___GetCertificatesNew:
-      type: object
-      properties:
-        _nodes:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/security._common___CertificateCountPerNode'
-        cluster_name:
-          type: string
-          description: Name of this cluster.
-        nodes:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/security._common___CertificatesPerNode'
+      allOf:
+        - $ref: '#/components/schemas/nodes._common___NodesResponseBase'
+        - type: object
+          properties:
+            cluster_name:
+              type: string
+              description: Name of this cluster.
+            nodes:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/security._common___CertificatesPerNode'
     security._common___HealthInfo:
       type: object
       properties:
@@ -63829,6 +66132,10 @@ components:
           type: string
         status:
           type: string
+        settings:
+          type: object
+          additionalProperties: true
+          x-version-added: '3.1'
     security._common___IndexPermission:
       type: object
       properties:
@@ -63892,7 +66199,7 @@ components:
             - string
         message:
           type: string
-          description: The nessage returned as part of an `OK` response.
+          description: The message returned as part of an `OK` response.
     security._common___PatchOperation:
       type: object
       properties:
@@ -63907,10 +66214,6 @@ components:
       required:
         - op
         - path
-    security._common___PatchOperations:
-      type: array
-      items:
-        $ref: '#/components/schemas/security._common___PatchOperation'
     security._common___PermissionsInfo:
       type: object
       properties:
@@ -63923,6 +66226,10 @@ components:
         disabled_endpoints:
           type: object
           description: An object with disabled APIs as keys and an array of HTTP methods as values.
+          additionalProperties:
+            type: array
+            items:
+              type: string
     security._common___Role:
       type: object
       properties:
@@ -64107,6 +66414,12 @@ components:
           type: boolean
         upgradeActions:
           type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
     security._common___UpgradePerform:
       type: object
       properties:
@@ -64114,6 +66427,12 @@ components:
           type: string
         upgrades:
           type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
     security._common___User:
       type: object
       properties:
