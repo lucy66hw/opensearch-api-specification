@@ -10496,6 +10496,21 @@ paths:
           $ref: '#/components/responses/geospatial.put_ip2geo_datasource_settings___200'
         '404':
           $ref: '#/components/responses/geospatial.put_ip2geo_datasource_settings___404'
+  /_plugins/ubi/initialize:
+    post:
+      operationId: ubi.initialize.0
+      x-operation-group: ubi.initialize
+      x-version-added: '1.0'
+      description: Initializes the UBI indexes.
+      responses:
+        '200':
+          $ref: '#/components/responses/ubi.initialize___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
   /_rank_eval:
     get:
       operationId: rank_eval.0
@@ -37701,6 +37716,12 @@ components:
           schema:
             $ref: '#/components/schemas/_common___AcknowledgedResponseBase'
       description: ''
+    ubi.initialize___200:
+      content:
+        text/plain:
+          schema:
+            $ref: '#/components/schemas/ubi._common___Initialize'
+      description: ''
     update_by_query_rethrottle___200:
       content:
         application/json:
@@ -38236,7 +38257,8 @@ components:
         error:
           $ref: '#/components/schemas/_common___ErrorCause'
         status:
-          type: number
+          type: integer
+          format: int32
           description: The HTTP status code.
       required:
         - error
@@ -38323,34 +38345,30 @@ components:
       required:
         - size_in_bytes
     _common___FieldSort:
-      oneOf:
-        - title: order
-          description: The sort order direction.
+      type: object
+      description: The detailed field sort options.
+      properties:
+        missing:
+          $ref: '#/components/schemas/_common___FieldValue'
+          description: The value to use when the field is missing.
+        mode:
+          $ref: '#/components/schemas/_common___SortMode'
+          description: The mode for sorting on array fields.
+        nested:
+          $ref: '#/components/schemas/_common___NestedSortValue'
+          description: The nested path sort options.
+        order:
           $ref: '#/components/schemas/_common___SortOrder'
-        - type: object
-          description: The detailed field sort options.
-          properties:
-            missing:
-              $ref: '#/components/schemas/_common___FieldValue'
-              description: The value to use when the field is missing.
-            mode:
-              $ref: '#/components/schemas/_common___SortMode'
-              description: The mode for sorting on array fields.
-            nested:
-              $ref: '#/components/schemas/_common___NestedSortValue'
-              description: The nested path sort options.
-            order:
-              $ref: '#/components/schemas/_common___SortOrder'
-              description: The sort order direction.
-            unmapped_type:
-              $ref: '#/components/schemas/_common.mapping___FieldType'
-              description: The type to use for unmapped fields.
-            numeric_type:
-              $ref: '#/components/schemas/_common___FieldSortNumericType'
-              description: The numeric type to use for sorting.
-            format:
-              type: string
-              description: The format to use for the sort values.
+          description: The sort order direction.
+        unmapped_type:
+          $ref: '#/components/schemas/_common.mapping___FieldType'
+          description: The type to use for unmapped fields.
+        numeric_type:
+          $ref: '#/components/schemas/_common___FieldSortNumericType'
+          description: The numeric type to use for sorting.
+        format:
+          type: string
+          description: The format to use for the sort values.
     _common___FieldSortNumericType:
       oneOf:
         - type: string
@@ -38372,6 +38390,14 @@ components:
         - 'null'
         - number
         - string
+    _common___FieldWithDirection:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/_common___SortOrder'
+    _common___FieldWithOrder:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/_common___FieldSort'
     _common___FlushStats:
       type: object
       description: The statistics about flush operations.
@@ -38754,7 +38780,7 @@ components:
           $ref: '#/components/schemas/_common___SequenceNumber'
         _primary_term:
           type: integer
-          format: int32
+          format: int64
           description: The primary term of the document.
         _routing:
           $ref: '#/components/schemas/_common___Routing'
@@ -39156,22 +39182,28 @@ components:
       description: The time taken by different phases of the search.
       properties:
         dfs_pre_query:
-          $ref: '#/components/schemas/_common___uint'
+          type: integer
+          format: int64
           description: The time taken for the distributed frequency search `pre-query` phase.
         query:
-          $ref: '#/components/schemas/_common___uint'
+          type: integer
+          format: int64
           description: The time taken for the `query` phase.
         fetch:
-          $ref: '#/components/schemas/_common___uint'
+          type: integer
+          format: int64
           description: The time taken for the `fetch` phase.
         dfs_query:
-          $ref: '#/components/schemas/_common___uint'
+          type: integer
+          format: int64
           description: The time taken for the distributed frequency search query phase.
         expand:
-          $ref: '#/components/schemas/_common___uint'
+          type: integer
+          format: int64
           description: The time taken for the `expand` phase.
         can_match:
-          $ref: '#/components/schemas/_common___uint'
+          type: integer
+          format: int64
           description: The time taken for the `can_match` phase.
       required:
         - can_match
@@ -40093,12 +40125,20 @@ components:
           description: Automatically determine the number of slices.
     _common___Sort:
       oneOf:
-        - $ref: '#/components/schemas/_common___SortOptions'
-          description: The single sort option.
+        - $ref: '#/components/schemas/_common___SortCombinations'
         - type: array
-          description: The list of sort options.
           items:
-            $ref: '#/components/schemas/_common___SortOptions'
+            $ref: '#/components/schemas/_common___SortCombinations'
+    _common___SortCombinations:
+      oneOf:
+        - title: field
+          $ref: '#/components/schemas/_common___Field'
+        - title: field_with_direction
+          $ref: '#/components/schemas/_common___FieldWithDirection'
+        - title: field_with_order
+          $ref: '#/components/schemas/_common___FieldWithOrder'
+        - title: options
+          $ref: '#/components/schemas/_common___SortOptions'
     _common___SortMode:
       oneOf:
         - type: string
@@ -40117,49 +40157,16 @@ components:
           const: sum
           description: Use the sum of all values.
     _common___SortOptions:
-      oneOf:
-        - type: string
-          const: _score
-          description: Sort by document score.
-        - type: string
-          const: _doc
-          description: Sort by document index order.
-        - type: string
-          description: Sort by field name.
-          not:
-            type: string
-            enum:
-              - _doc
-              - _score
-        - type: object
-          description: Sort by score options.
-          properties:
-            _score:
-              $ref: '#/components/schemas/_common___ScoreSort'
-            _doc:
-              $ref: '#/components/schemas/_common___ScoreSort'
-            _geo_distance:
-              $ref: '#/components/schemas/_common___GeoDistanceSort'
-            _script:
-              $ref: '#/components/schemas/_common___ScriptSort'
-          minProperties: 1
-          maxProperties: 1
-        - type: object
-          description: Sort by field options.
-          propertyNames:
-            allOf:
-              - $ref: '#/components/schemas/_common___Field'
-              - not:
-                  type: string
-                  enum:
-                    - _doc
-                    - _geo_distance
-                    - _score
-                    - _script
-          additionalProperties:
-            $ref: '#/components/schemas/_common___FieldSort'
-          minProperties: 1
-          maxProperties: 1
+      type: object
+      properties:
+        _score:
+          $ref: '#/components/schemas/_common___ScoreSort'
+        _geo_distance:
+          $ref: '#/components/schemas/_common___GeoDistanceSort'
+        _script:
+          $ref: '#/components/schemas/_common___ScriptSort'
+      minProperties: 1
+      maxProperties: 1
     _common___SortOrder:
       type: string
       description: The direction of the sort order.
@@ -40811,20 +40818,6 @@ components:
       allOf:
         - type: object
           properties:
-            aggregations:
-              description: |-
-                Sub-aggregations for this aggregation.
-                Only applies to bucket aggregations.
-              type: object
-              additionalProperties:
-                $ref: '#/components/schemas/_common.aggregations___AggregationContainer'
-            aggs:
-              description: |-
-                Sub-aggregations for this aggregation.
-                Only applies to bucket aggregations.
-              type: object
-              additionalProperties:
-                $ref: '#/components/schemas/_common.aggregations___AggregationContainer'
             meta:
               $ref: '#/components/schemas/_common___Metadata'
         - type: object
@@ -41366,6 +41359,17 @@ components:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___Aggregation'
         - type: object
+          properties:
+            aggregations:
+              description: Sub-aggregations for this bucket aggregation
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/_common.aggregations___AggregationContainer'
+            aggs:
+              description: Sub-aggregations for this bucket aggregation
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/_common.aggregations___AggregationContainer'
     _common.aggregations___BucketMetricValueAggregate:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___SingleMetricAggregateBase'
@@ -41521,8 +41525,6 @@ components:
                 This allows to trade memory for accuracy.
               type: integer
               format: int32
-            rehash:
-              type: boolean
             execution_hint:
               $ref: '#/components/schemas/_common.aggregations___CardinalityExecutionMode'
     _common.aggregations___CardinalityExecutionMode:
@@ -41530,9 +41532,6 @@ components:
       enum:
         - direct
         - global_ordinals
-        - save_memory_heuristic
-        - save_time_heuristic
-        - segment_ordinals
     _common.aggregations___ChildrenAggregate:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___SingleBucketAggregateBase'
@@ -42518,14 +42517,16 @@ components:
               type: number
               format: double
     _common.aggregations___MetricAggregationBase:
-      type: object
-      properties:
-        field:
-          $ref: '#/components/schemas/_common___Field'
-        missing:
-          $ref: '#/components/schemas/_common___FieldValue'
-        script:
-          $ref: '#/components/schemas/_common___Script'
+      allOf:
+        - $ref: '#/components/schemas/_common.aggregations___Aggregation'
+        - type: object
+          properties:
+            field:
+              $ref: '#/components/schemas/_common___Field'
+            missing:
+              $ref: '#/components/schemas/_common___FieldValue'
+            script:
+              $ref: '#/components/schemas/_common___Script'
     _common.aggregations___MinAggregate:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___SingleMetricAggregateBase'
@@ -49408,11 +49409,7 @@ components:
         items:
           type: array
           items:
-            type: object
-            additionalProperties:
-              $ref: '#/components/schemas/_core.bulk___ResponseItem'
-            minProperties: 1
-            maxProperties: 1
+            $ref: '#/components/schemas/_core.bulk___Items'
         took:
           type: integer
           format: int64
@@ -49455,6 +49452,19 @@ components:
               $ref: '#/components/schemas/_common___VersionNumber'
             version_type:
               $ref: '#/components/schemas/_common___VersionType'
+    _core.bulk___Items:
+      type: object
+      properties:
+        index:
+          $ref: '#/components/schemas/_core.bulk___ResponseItem'
+        create:
+          $ref: '#/components/schemas/_core.bulk___ResponseItem'
+        update:
+          $ref: '#/components/schemas/_core.bulk___ResponseItem'
+        delete:
+          $ref: '#/components/schemas/_core.bulk___ResponseItem'
+      minProperties: 1
+      maxProperties: 1
     _core.bulk___OperationBase:
       type: object
       properties:
@@ -57816,6 +57826,9 @@ components:
           type: object
           additionalProperties: true
           description: Custom parameters for the ingestion source.
+        all_active:
+          description: Indicates if all-active ingestion is enabled for this index.
+          $ref: '#/components/schemas/_common___StringifiedBoolean'
     indices._common___IngestionSourcePointer:
       type: object
       properties:
@@ -60611,16 +60624,16 @@ components:
       type: object
       properties:
         min_size:
-          type: number
+          type: string
           description: The minimum size to trigger rollover.
         min_index_age:
-          type: number
+          type: string
           description: The minimum index age to trigger rollover.
         min_doc_count:
           type: number
           description: The minimum document count to trigger rollover.
         min_primary_shard_size:
-          type: number
+          type: string
           description: The minimum primary shard size to trigger rollover.
         copy_alias:
           type: boolean
@@ -69666,6 +69679,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/transforms._common___TransformResponse'
+    ubi._common___Initialize:
+      type: string
     wlm._common___QueryGroupCreate:
       type: object
       properties:
