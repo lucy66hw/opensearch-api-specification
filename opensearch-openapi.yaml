@@ -49349,22 +49349,23 @@ components:
         - index
         - path
     _common.query_dsl___TermsQuery:
-      allOf:
-        - $ref: '#/components/schemas/_common.query_dsl___QueryBase'
-        - type: object
-          properties:
-            _name: {}
-            boost: {}
-            value_type:
-              description: Specifies the types of values used for filtering. Valid values are `default` and `bitmap`. Default is `default`.
-              $ref: '#/components/schemas/_common.query_dsl___TermsQueryValueType'
-          propertyNames:
-            title: field
-            type: string
-          additionalProperties:
-            title: terms
-            $ref: '#/components/schemas/_common.query_dsl___TermsQueryField'
-          minProperties: 1
+      type: object
+      properties:
+        _name:
+          type: string
+        boost:
+          type: number
+          format: float
+        value_type:
+          description: Specifies the types of values used for filtering. Valid values are `default` and `bitmap`. Default is `default`.
+          $ref: '#/components/schemas/_common.query_dsl___TermsQueryValueType'
+      propertyNames:
+        title: field
+        type: string
+      additionalProperties:
+        title: terms
+        $ref: '#/components/schemas/_common.query_dsl___TermsQueryField'
+      minProperties: 1
     _common.query_dsl___TermsQueryField:
       oneOf:
         - title: value
@@ -49627,6 +49628,13 @@ components:
         doc_as_upsert:
           description: When `true`, uses the contents of `doc` as the value of `upsert`.
           type: boolean
+        if_seq_no:
+          $ref: '#/components/schemas/_common___SequenceNumber'
+          x-protobuf-excluded: true
+        if_primary_term:
+          type: integer
+          format: int64
+          x-protobuf-excluded: true
         script:
           $ref: '#/components/schemas/_common___Script'
         scripted_upsert:
