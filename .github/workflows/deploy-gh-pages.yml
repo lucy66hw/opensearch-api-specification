@@ -51,7 +51,7 @@ jobs:
           event-type: spec-updated
           client-payload: |
             {
-              "spec_repository": "opensearch-project/opensearch-api-specification",
+              "spec_repository": "lucy66hw/opensearch-api-specification",
               "spec_tag": "main-latest",
               "pr_number": "${{ github.event.pull_request.number || '' }}",
               "ref": "${{ github.ref }}"
