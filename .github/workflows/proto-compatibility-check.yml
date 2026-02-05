@@ -32,7 +32,7 @@ jobs:
 
   compatibility-report:
     needs: build-spec
-    uses: opensearch-project/opensearch-protobufs/.github/workflows/backward-compatible-report.yml@main
+    uses: lucy66hw/opensearch-protobufs/.github/workflows/backward-compatible-report.yml@main
     with:
       spec_artifact_name: openapi-spec
 
