@@ -3944,6 +3944,7 @@ paths:
       externalDocs:
         url: https://opensearch.org/docs/latest/api-reference/multi-search/
       parameters:
+        - $ref: '#/components/parameters/msearch___query.allow_partial_results'
         - $ref: '#/components/parameters/msearch___query.ccs_minimize_roundtrips'
         - $ref: '#/components/parameters/msearch___query.max_concurrent_searches'
         - $ref: '#/components/parameters/msearch___query.max_concurrent_shard_requests'
@@ -3969,6 +3970,7 @@ paths:
       externalDocs:
         url: https://opensearch.org/docs/latest/api-reference/multi-search/
       parameters:
+        - $ref: '#/components/parameters/msearch___query.allow_partial_results'
         - $ref: '#/components/parameters/msearch___query.ccs_minimize_roundtrips'
         - $ref: '#/components/parameters/msearch___query.max_concurrent_searches'
         - $ref: '#/components/parameters/msearch___query.max_concurrent_shard_requests'
@@ -8115,6 +8117,68 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/search_relevance.get_experiments___200'
+  /_plugins/_search_relevance/experiments/schedule:
+    get:
+      operationId: search_relevance.get_scheduled_experiments.0
+      x-operation-group: search_relevance.get_scheduled_experiments
+      x-version-added: '3.4'
+      description: Gets the scheduled experiments.
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_scheduled_experiments___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    post:
+      operationId: search_relevance.post_scheduled_experiments.0
+      x-operation-group: search_relevance.post_scheduled_experiments
+      x-version-added: '3.4'
+      description: Creates a scheduled experiment.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.post_scheduled_experiments'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.post_scheduled_experiments___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+  /_plugins/_search_relevance/experiments/schedule/{experiment_id}:
+    delete:
+      operationId: search_relevance.delete_scheduled_experiments.0
+      x-operation-group: search_relevance.delete_scheduled_experiments
+      x-version-added: '3.4'
+      description: Deletes a specified scheduled experiment.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.delete_scheduled_experiments___path.experiment_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.delete_scheduled_experiments___200'
+    get:
+      operationId: search_relevance.get_scheduled_experiments.1
+      x-operation-group: search_relevance.get_scheduled_experiments
+      x-version-added: '3.4'
+      description: Gets the scheduled experiments.
+      parameters:
+        - $ref: '#/components/parameters/search_relevance.get_scheduled_experiments___path.experiment_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.get_scheduled_experiments___200'
   /_plugins/_search_relevance/judgments:
     get:
       operationId: search_relevance.get_judgments.0
@@ -14178,6 +14242,7 @@ paths:
         url: https://opensearch.org/docs/latest/api-reference/multi-search/
       parameters:
         - $ref: '#/components/parameters/msearch___path.index'
+        - $ref: '#/components/parameters/msearch___query.allow_partial_results'
         - $ref: '#/components/parameters/msearch___query.ccs_minimize_roundtrips'
         - $ref: '#/components/parameters/msearch___query.max_concurrent_searches'
         - $ref: '#/components/parameters/msearch___query.max_concurrent_shard_requests'
@@ -14204,6 +14269,7 @@ paths:
         url: https://opensearch.org/docs/latest/api-reference/multi-search/
       parameters:
         - $ref: '#/components/parameters/msearch___path.index'
+        - $ref: '#/components/parameters/msearch___query.allow_partial_results'
         - $ref: '#/components/parameters/msearch___query.ccs_minimize_roundtrips'
         - $ref: '#/components/parameters/msearch___query.max_concurrent_searches'
         - $ref: '#/components/parameters/msearch___query.max_concurrent_shard_requests'
@@ -26803,6 +26869,14 @@ components:
       schema:
         $ref: '#/components/schemas/_common___Indices'
       style: simple
+    msearch___query.allow_partial_results:
+      in: query
+      name: allow_partial_results
+      description: Specifies whether to return partial results if there are shard request timeouts or shard failures
+      schema:
+        type: boolean
+        default: true
+      style: form
     msearch___query.ccs_minimize_roundtrips:
       in: query
       name: ccs_minimize_roundtrips
@@ -28042,6 +28116,13 @@ components:
       description: The query set id
       schema:
         type: string
+    search_relevance.delete_scheduled_experiments___path.experiment_id:
+      name: experiment_id
+      in: path
+      required: true
+      description: The experiment id
+      schema:
+        type: string
     search_relevance.delete_search_configurations___path.search_configuration_id:
       name: search_configuration_id
       in: path
@@ -28117,6 +28198,13 @@ components:
       in: path
       required: true
       description: The query set id
+      schema:
+        type: string
+    search_relevance.get_scheduled_experiments___path.experiment_id:
+      name: experiment_id
+      in: path
+      required: true
+      description: The experiment id
       schema:
         type: string
     search_relevance.get_search_configurations___path.search_configuration_id:
@@ -32653,6 +32741,7 @@ components:
               aggs:
                 description: Defines the aggregations that are run as part of the search request.
                 type: object
+                x-protobuf-excluded: true
                 additionalProperties:
                   $ref: '#/components/schemas/_common.aggregations___AggregationContainer'
               collapse:
@@ -32806,137 +32895,38 @@ components:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              name:
-                type: string
-              description:
-                type: string
-              sampling:
-                type: string
-              querySetSize:
-                type: integer
+            $ref: '#/components/schemas/search_relevance._common___PostQuerySetsRequest'
+    search_relevance.post_scheduled_experiments:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/search_relevance._common___PostScheduledExperimentsRequest'
     search_relevance.put_experiments:
       content:
         application/json:
           schema:
             anyOf:
-              - type: object
-                description: The schema for a pointwise and hybrid optimizer experiment
-                properties:
-                  querySetId:
-                    type: string
-                  searchConfigurationList:
-                    type: array
-                    items:
-                      type: string
-                  judgmentList:
-                    type: array
-                    items:
-                      type: string
-                  size:
-                    type: integer
-                  type:
-                    type: string
-              - type: object
-                description: The schema for a pairwise experiment
-                properties:
-                  querySetId:
-                    type: string
-                  searchConfigurationList:
-                    type: array
-                    items:
-                      type: string
-                  size:
-                    type: integer
-                  type:
-                    type: string
+              - $ref: '#/components/schemas/search_relevance._common___PutHybridOptimizerExperimentRequest'
+              - $ref: '#/components/schemas/search_relevance._common___PutPointwiseExperimentRequest'
+              - $ref: '#/components/schemas/search_relevance._common___PutPairwiseExperimentRequest'
     search_relevance.put_judgments:
       content:
         application/json:
           schema:
             oneOf:
-              - type: object
-                description: The schema for a LLM judgment
-                properties:
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  type:
-                    type: string
-                  modelId:
-                    type: string
-                  querySetId:
-                    type: string
-                  searchConfigurationList:
-                    type: array
-                    items:
-                      type: string
-                  size:
-                    type: integer
-                  ignoreFailure:
-                    type: boolean
-                  contextFields:
-                    type: array
-                    items:
-                      type: string
-              - type: object
-                description: The schema for a UBI judgment
-                properties:
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  type:
-                    type: string
-                  clickModel:
-                    type: string
-                  maxRank:
-                    type: integer
-              - type: object
-                description: The schema for an import judgment
-                properties:
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  type:
-                    type: string
-                  judgmentRatings:
-                    type: array
-                    items:
-                      type: object
+              - $ref: '#/components/schemas/search_relevance._common___PutLLMJudgmentsRequest'
+              - $ref: '#/components/schemas/search_relevance._common___PutUBIJudgmentsRequest'
+              - $ref: '#/components/schemas/search_relevance._common___PutImportJudgmentsRequest'
     search_relevance.put_query_sets:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              name:
-                type: string
-              description:
-                type: string
-              sampling:
-                type: string
-              querySetQueries:
-                type: array
-                items:
-                  type: object
+            $ref: '#/components/schemas/search_relevance._common___PutQuerySetsRequest'
     search_relevance.put_search_configurations:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              name:
-                type: string
-              index:
-                type: string
-              query:
-                type: string
-              searchPipeline:
-                type: string
+            $ref: '#/components/schemas/search_relevance._common___PutSearchConfigurationRequest'
     search_shards:
       content:
         application/json:
@@ -37132,117 +37122,135 @@ components:
       content:
         application/json:
           schema:
-            type: object
+            $ref: '#/components/schemas/_common___WriteResponseBase'
       description: ''
     search_relevance.delete_judgments___200:
       content:
         application/json:
           schema:
-            type: object
+            $ref: '#/components/schemas/_common___WriteResponseBase'
       description: ''
     search_relevance.delete_query_sets___200:
       content:
         application/json:
           schema:
-            type: object
+            $ref: '#/components/schemas/_common___WriteResponseBase'
+      description: ''
+    search_relevance.delete_scheduled_experiments___200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_common___WriteResponseBase'
       description: ''
     search_relevance.delete_search_configurations___200:
       content:
         application/json:
           schema:
-            type: object
+            $ref: '#/components/schemas/_common___WriteResponseBase'
       description: ''
     search_relevance.get_experiments___200:
       content:
         application/json:
           schema:
-            oneOf:
-              - $ref: '#/components/schemas/search_relevance._common___Experiment'
-              - $ref: '#/components/schemas/search_relevance._common___GenericObject'
+            $ref: '#/components/schemas/_core.search___SearchResult'
       description: ''
     search_relevance.get_judgments___200:
       content:
         application/json:
           schema:
-            oneOf:
-              - $ref: '#/components/schemas/search_relevance._common___Judgment'
-              - $ref: '#/components/schemas/search_relevance._common___GenericObject'
+            $ref: '#/components/schemas/_core.search___SearchResult'
       description: ''
     search_relevance.get_node_stats___200:
       content:
         application/json:
           schema:
-            type: object
+            allOf:
+              - $ref: '#/components/schemas/nodes._common___NodesResponseBase'
+              - type: object
+                properties:
+                  cluster_name:
+                    $ref: '#/components/schemas/_common___Name'
+                  info:
+                    type: object
+                  all_nodes:
+                    type: object
+                  nodes:
+                    type: object
+                required:
+                  - nodes
       description: ''
     search_relevance.get_query_sets___200:
       content:
         application/json:
           schema:
-            oneOf:
-              - $ref: '#/components/schemas/search_relevance._common___QuerySet'
-              - $ref: '#/components/schemas/search_relevance._common___GenericObject'
+            $ref: '#/components/schemas/_core.search___SearchResult'
+      description: ''
+    search_relevance.get_scheduled_experiments___200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_core.search___SearchResult'
       description: ''
     search_relevance.get_search_configurations___200:
       content:
         application/json:
           schema:
-            oneOf:
-              - $ref: '#/components/schemas/search_relevance._common___SearchConfiguration'
-              - $ref: '#/components/schemas/search_relevance._common___GenericObject'
+            $ref: '#/components/schemas/_core.search___SearchResult'
       description: ''
     search_relevance.get_stats___200:
       content:
         application/json:
           schema:
-            type: object
+            allOf:
+              - $ref: '#/components/schemas/nodes._common___NodesResponseBase'
+              - type: object
+                properties:
+                  cluster_name:
+                    $ref: '#/components/schemas/_common___Name'
+                  info:
+                    type: object
+                  all_nodes:
+                    type: object
+                  nodes:
+                    type: object
+                required:
+                  - nodes
       description: ''
     search_relevance.post_query_sets___200:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              query_set_id:
-                type: string
-              query_set_result:
-                type: string
+            $ref: '#/components/schemas/search_relevance._common___PostQuerySetsResponse'
+      description: ''
+    search_relevance.post_scheduled_experiments___200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/search_relevance._common___PostScheduledExperimentsResponse'
       description: ''
     search_relevance.put_experiments___200:
       content:
         application/json:
           schema:
-            type: object
+            $ref: '#/components/schemas/search_relevance._common___PutExperimentResponse'
       description: ''
     search_relevance.put_judgments___200:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              judgment_id:
-                type: string
+            $ref: '#/components/schemas/search_relevance._common___PutJudgmentsResponse'
       description: ''
     search_relevance.put_query_sets___200:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              query_set_id:
-                type: string
-              query_set_result:
-                type: string
+            $ref: '#/components/schemas/search_relevance._common___PutQuerySetsResponse'
       description: ''
     search_relevance.put_search_configurations___200:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              search_configuration_id:
-                type: string
-              search_configuration_result:
-                type: string
+            $ref: '#/components/schemas/search_relevance._common___PutSearchConfigurationResponse'
       description: ''
     search_shards___200:
       content:
@@ -40857,6 +40865,24 @@ components:
         - failed
         - successful
         - total
+    _common___ShardSearchFailure:
+      type: object
+      description: Represents a failure to search on a specific shard. Used in search responses.
+      properties:
+        shard:
+          type: integer
+          description: The shard id where the failure occurred.
+        index:
+          type: string
+          description: The index name where the failure occurred.
+        node:
+          type: string
+          description: The node id where the failure occurred.
+        reason:
+          $ref: '#/components/schemas/_common___ErrorCause'
+      required:
+        - reason
+        - shard
     _common___ShardsOperationResponseBase:
       description: The base response for operations involving shards.
       type: object
@@ -40877,7 +40903,7 @@ components:
         failures:
           type: array
           items:
-            $ref: '#/components/schemas/_common___ShardFailure'
+            $ref: '#/components/schemas/_common___ShardSearchFailure'
         skipped:
           $ref: '#/components/schemas/_common___uint'
       required:
@@ -41574,6 +41600,8 @@ components:
           $ref: '#/components/schemas/_common.aggregations___TTestAggregate'
         - title: top_hits
           $ref: '#/components/schemas/_common.aggregations___TopHitsAggregate'
+        - title: ulterms
+          $ref: '#/components/schemas/_common.aggregations___UnsignedLongTermsAggregate'
         - title: umrareterms
           $ref: '#/components/schemas/_common.aggregations___UnmappedRareTermsAggregate'
         - title: umsigterms
@@ -41609,15 +41637,11 @@ components:
       type: object
       properties:
         meta:
+          description: Custom metadata to associate with the aggregation (optional)
           $ref: '#/components/schemas/_common___Metadata'
-        name:
-          type: string
     _common.aggregations___AggregationContainer:
       allOf:
-        - type: object
-          properties:
-            meta:
-              $ref: '#/components/schemas/_common___Metadata'
+        - $ref: '#/components/schemas/_common.aggregations___Aggregation'
         - type: object
           oneOf:
             - properties:
@@ -41734,12 +41758,15 @@ components:
               required:
                 - extended_stats_bucket
               unevaluatedProperties: true
-            - properties:
-                filter:
-                  $ref: '#/components/schemas/_common.query_dsl___QueryContainer'
-              required:
-                - filter
-              unevaluatedProperties: true
+            - allOf:
+                - $ref: '#/components/schemas/_common.aggregations___BucketAggregationBase'
+                - type: object
+                  properties:
+                    filter:
+                      $ref: '#/components/schemas/_common.query_dsl___QueryContainer'
+                  required:
+                    - filter
+              x-protobuf-excluded: true
             - properties:
                 filters:
                   $ref: '#/components/schemas/_common.aggregations___FiltersAggregation'
@@ -42157,17 +42184,40 @@ components:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___Aggregation'
         - type: object
-          properties:
-            aggregations:
-              description: Sub-aggregations for this bucket aggregation
-              type: object
-              additionalProperties:
-                $ref: '#/components/schemas/_common.aggregations___AggregationContainer'
-            aggs:
-              description: Sub-aggregations for this bucket aggregation
-              type: object
-              additionalProperties:
-                $ref: '#/components/schemas/_common.aggregations___AggregationContainer'
+          oneOf:
+            - properties:
+                aggregations:
+                  description: Sub-aggregations for this bucket aggregation
+                  type: object
+                  propertyNames:
+                    title: aggregation_name
+                    description: Sub-aggregation name
+                    type: string
+                  additionalProperties:
+                    title: aggregation_container
+                    $ref: '#/components/schemas/_common.aggregations___AggregationContainer'
+              required:
+                - aggregations
+            - properties:
+                aggs:
+                  description: Sub-aggregations for this bucket aggregation (alias for 'aggregations')
+                  type: object
+                  x-protobuf-excluded: true
+                  propertyNames:
+                    title: aggregation_name
+                    description: Sub-aggregation name
+                    type: string
+                  additionalProperties:
+                    title: aggregation_container
+                    $ref: '#/components/schemas/_common.aggregations___AggregationContainer'
+              required:
+                - aggs
+            - not:
+                anyOf:
+                  - required:
+                      - aggregations
+                  - required:
+                      - aggs
     _common.aggregations___BucketMetricValueAggregate:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___SingleMetricAggregateBase'
@@ -42611,7 +42661,6 @@ components:
       description: Result of a `terms` aggregation when the field is some kind of decimal number like a float, double, or distance.
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___TermsAggregateBaseDoubleTermsBucket'
-        - type: object
     _common.aggregations___DoubleTermsBucket:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___TermsBucketBase'
@@ -43196,7 +43245,6 @@ components:
       description: Result of a `terms` aggregation when the field is some kind of whole number like a integer, long, or a date.
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___TermsAggregateBaseLongTermsBucket'
-        - type: object
     _common.aggregations___LongTermsBucket:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___TermsBucketBase'
@@ -43298,6 +43346,9 @@ components:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___FormatMetricAggregationBase'
         - type: object
+          properties:
+            value_type:
+              $ref: '#/components/schemas/_common.aggregations___ValueType'
     _common.aggregations___MaxBucketAggregation:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___PipelineAggregationBase'
@@ -43320,12 +43371,17 @@ components:
         - $ref: '#/components/schemas/_common.aggregations___Aggregation'
         - type: object
           properties:
-            field:
-              $ref: '#/components/schemas/_common___Field'
             missing:
               $ref: '#/components/schemas/_common___FieldValue'
-            script:
-              $ref: '#/components/schemas/_common___Script'
+        - anyOf:
+            - type: object
+              properties:
+                field:
+                  $ref: '#/components/schemas/_common___Field'
+            - type: object
+              properties:
+                script:
+                  $ref: '#/components/schemas/_common___Script'
     _common.aggregations___MinAggregate:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___SingleMetricAggregateBase'
@@ -43334,6 +43390,9 @@ components:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___FormatMetricAggregationBase'
         - type: object
+          properties:
+            value_type:
+              $ref: '#/components/schemas/_common.aggregations___ValueType'
     _common.aggregations___MinBucketAggregation:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___PipelineAggregationBase'
@@ -43664,6 +43723,8 @@ components:
         doc_count:
           type: integer
           format: int64
+      additionalProperties:
+        $ref: '#/components/schemas/_common.aggregations___Aggregate'
       required:
         - doc_count
     _common.aggregations___MultiTermLookup:
@@ -44426,7 +44487,6 @@ components:
       description: Result of a `terms` aggregation when the field is a string.
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___TermsAggregateBaseStringTermsBucket'
-        - type: object
     _common.aggregations___StringTermsBucket:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___TermsBucketBase'
@@ -44484,30 +44544,22 @@ components:
         - type: object
           properties:
             buckets:
-              allOf:
-                - $ref: '#/components/schemas/_common.aggregations___Buckets'
-                - oneOf:
-                    - type: object
-                      additionalProperties:
-                        $ref: '#/components/schemas/_common.aggregations___DoubleTermsBucket'
-                    - type: array
-                      items:
-                        $ref: '#/components/schemas/_common.aggregations___DoubleTermsBucket'
+              type: array
+              items:
+                $ref: '#/components/schemas/_common.aggregations___DoubleTermsBucket'
+          required:
+            - buckets
     _common.aggregations___TermsAggregateBaseLongTermsBucket:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___TermsAggregateBase'
         - type: object
           properties:
             buckets:
-              allOf:
-                - $ref: '#/components/schemas/_common.aggregations___Buckets'
-                - oneOf:
-                    - type: object
-                      additionalProperties:
-                        $ref: '#/components/schemas/_common.aggregations___LongTermsBucket'
-                    - type: array
-                      items:
-                        $ref: '#/components/schemas/_common.aggregations___LongTermsBucket'
+              type: array
+              items:
+                $ref: '#/components/schemas/_common.aggregations___LongTermsBucket'
+          required:
+            - buckets
     _common.aggregations___TermsAggregateBaseMultiTermsBucket:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___TermsAggregateBase'
@@ -44529,30 +44581,33 @@ components:
         - type: object
           properties:
             buckets:
-              allOf:
-                - $ref: '#/components/schemas/_common.aggregations___Buckets'
-                - oneOf:
-                    - type: object
-                      additionalProperties:
-                        $ref: '#/components/schemas/_common.aggregations___StringTermsBucket'
-                    - type: array
-                      items:
-                        $ref: '#/components/schemas/_common.aggregations___StringTermsBucket'
+              type: array
+              items:
+                $ref: '#/components/schemas/_common.aggregations___StringTermsBucket'
+          required:
+            - buckets
+    _common.aggregations___TermsAggregateBaseUnsignedLongTermsBucket:
+      allOf:
+        - $ref: '#/components/schemas/_common.aggregations___TermsAggregateBase'
+        - type: object
+          properties:
+            buckets:
+              type: array
+              items:
+                $ref: '#/components/schemas/_common.aggregations___UnsignedLongTermsBucket'
+          required:
+            - buckets
     _common.aggregations___TermsAggregateBaseVoid:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___TermsAggregateBase'
         - type: object
           properties:
             buckets:
-              allOf:
-                - $ref: '#/components/schemas/_common.aggregations___Buckets'
-                - oneOf:
-                    - type: object
-                      additionalProperties:
-                        $ref: '#/components/schemas/_common___Void'
-                    - type: array
-                      items:
-                        $ref: '#/components/schemas/_common___Void'
+              type: array
+              items:
+                $ref: '#/components/schemas/_common___Void'
+          required:
+            - buckets
     _common.aggregations___TermsAggregation:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___BucketAggregationBase'
@@ -44564,23 +44619,19 @@ components:
               $ref: '#/components/schemas/_common.aggregations___TermsExclude'
             execution_hint:
               $ref: '#/components/schemas/_common.aggregations___TermsAggregationExecutionHint'
-            field:
-              $ref: '#/components/schemas/_common___Field'
             include:
               $ref: '#/components/schemas/_common.aggregations___TermsInclude'
             min_doc_count:
               description: Only return values that are found in more than `min_doc_count` hits.
               type: integer
-              format: int32
+              format: int64
             missing:
               $ref: '#/components/schemas/_common___FieldValue'
             value_type:
               description: Coerced unmapped fields into the specified type.
-              type: string
+              $ref: '#/components/schemas/_common.aggregations___ValueType'
             order:
               $ref: '#/components/schemas/_common.aggregations___AggregateOrder'
-            script:
-              $ref: '#/components/schemas/_common___Script'
             shard_size:
               description: |-
                 The number of candidate terms produced by each shard.
@@ -44590,7 +44641,7 @@ components:
             shard_min_doc_count:
               description: The minimum number of documents in a bucket on each shard for it to be returned.
               type: integer
-              format: int32
+              format: int64
             show_term_doc_count_error:
               description: Set to `true` to return the `doc_count_error_upper_bound`, which is an upper bound to the error on the `doc_count` returned by each shard.
               type: boolean
@@ -44600,6 +44651,15 @@ components:
               format: int32
             format:
               type: string
+        - anyOf:
+            - type: object
+              properties:
+                field:
+                  $ref: '#/components/schemas/_common___Field'
+            - type: object
+              properties:
+                script:
+                  $ref: '#/components/schemas/_common___Script'
     _common.aggregations___TermsAggregationCollectMode:
       type: string
       enum:
@@ -44617,9 +44677,10 @@ components:
         - $ref: '#/components/schemas/_common.aggregations___MultiBucketBase'
         - type: object
           properties:
-            doc_count_error:
+            doc_count_error_upper_bound:
               type: integer
               format: int64
+              description: Upper bound of the document count error. Only present when `show_term_doc_count_error` is true.
     _common.aggregations___TermsExclude:
       oneOf:
         - title: regexp
@@ -44644,11 +44705,11 @@ components:
         num_partitions:
           description: The number of partitions.
           type: integer
-          format: int64
+          format: int32
         partition:
           description: The partition number for this request.
           type: integer
-          format: int64
+          format: int32
       required:
         - num_partitions
         - partition
@@ -44756,7 +44817,40 @@ components:
       description: Result of a `terms` aggregation when the field is unmapped. `buckets` is always empty.
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___TermsAggregateBaseVoid'
+    _common.aggregations___UnsignedLongTermsAggregate:
+      description: |-
+        Result of a `terms` aggregation when the field is an `unsigned_long` (64-bit unsigned integer).
+        OpenSearch stores `unsigned_long` values as Long or BigInteger internally. In JSON responses,
+        bucket keys are represented as numbers, which may lose precision for values larger than 2^53--1
+        due to IEEE 754 double precision limitations. In protocol buffer representations, keys are
+        manually defined as uint64 to preserve the full 64-bit unsigned range. Use `key_as_string` in
+        buckets for exact string representation of large unsigned long values.
+      allOf:
+        - $ref: '#/components/schemas/_common.aggregations___TermsAggregateBaseUnsignedLongTermsBucket'
+    _common.aggregations___UnsignedLongTermsBucket:
+      description: |-
+        Terms bucket for `unsigned_long` field type. The server returns 64-bit unsigned integer values
+        as Long or BigInteger types. Due to JSON specification limitations (IEEE 754 double precision
+        provides only 53 bits of integer precision), the key is represented as `type: number` in the
+        OpenAPI spec. For protocol buffer definitions, this is manually overridden to `uint64` to
+        preserve the full 64-bit unsigned integer range in binary encoding.
+      allOf:
+        - $ref: '#/components/schemas/_common.aggregations___TermsBucketBase'
         - type: object
+          properties:
+            key:
+              type: number
+              description: |
+                The unsigned 64-bit integer bucket key. While JSON represents this as a number,
+                values larger than 2^53--1 may lose precision in JSON serialization. The gRPC
+                protocol buffer definition uses uint64 to preserve full precision. Use `key_as_string`
+                for exact string representation of large values.
+              x-protobuf-type: uint64
+            key_as_string:
+              type: string
+              description: String representation of the key. Only present when a custom `format` parameter is specified in the aggregation request.
+          required:
+            - key
     _common.aggregations___ValueCountAggregate:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___SingleMetricAggregateBase'
@@ -44767,17 +44861,23 @@ components:
         - type: object
     _common.aggregations___ValueType:
       type: string
+      description: |-
+        The data type for a field. The server's `lenientParse` accepts multiple representations
+        for the same underlying type (for example, byte/short/integer/long all map to long).
       enum:
         - boolean
+        - byte
         - date
-        - date_nanos
         - double
-        - geo_point
+        - float
+        - integer
         - ip
         - long
         - number
         - numeric
+        - short
         - string
+        - unsigned_long
     _common.aggregations___VariableWidthHistogramAggregate:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations___MultiBucketAggregateBaseVariableWidthHistogramBucket'
@@ -68672,17 +68772,51 @@ components:
           format: int32
         context_prefix:
           type: string
-    search_relevance._common___Experiment:
+    search_relevance._common___PostQuerySetsRequest:
+      type: object
+      description: The schema for creating a query set.
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        sampling:
+          type: string
+        querySetSize:
+          type: integer
+    search_relevance._common___PostQuerySetsResponse:
       type: object
       properties:
-        id:
+        query_set_id:
           type: string
-        timestamp:
+        query_set_result:
           type: string
-        type:
+    search_relevance._common___PostScheduledExperimentsRequest:
+      type: object
+      description: The schema for scheduling experiments.
+      properties:
+        experimentId:
           type: string
-        status:
+        cronExpression:
           type: string
+    search_relevance._common___PostScheduledExperimentsResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+        job_result:
+          type: string
+    search_relevance._common___PutExperimentResponse:
+      type: object
+      properties:
+        experiment_id:
+          type: string
+        experiment_result:
+          type: string
+    search_relevance._common___PutHybridOptimizerExperimentRequest:
+      type: object
+      description: The schema for a hybrid optimizer experiment.
+      properties:
         querySetId:
           type: string
         searchConfigurationList:
@@ -68695,59 +68829,110 @@ components:
             type: string
         size:
           type: integer
-        results:
-          type: object
-    search_relevance._common___GenericObject:
-      type: object
-      properties:
-        took:
-          type: integer
-        timed_out:
-          type: boolean
-        _shards:
-          type: object
-        hits:
-          type: object
-    search_relevance._common___Judgment:
-      type: object
-      properties:
-        id:
+        type:
           type: string
-        timestamp:
-          type: string
+    search_relevance._common___PutImportJudgmentsRequest:
+      type: object
+      description: The schema for an import judgment.
+      properties:
         name:
           type: string
-        status:
+        description:
           type: string
         type:
           type: string
-        metadata:
-          type: object
-        judgmentScores:
-          type: object
-    search_relevance._common___QuerySet:
+        judgmentRatings:
+          type: array
+          items:
+            type: object
+    search_relevance._common___PutJudgmentsResponse:
       type: object
       properties:
-        id:
+        judgment_id:
           type: string
+    search_relevance._common___PutLLMJudgmentsRequest:
+      type: object
+      description: The schema for a LLM judgment.
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        modelId:
+          type: string
+        querySetId:
+          type: string
+        searchConfigurationList:
+          type: array
+          items:
+            type: string
+        size:
+          type: integer
+        ignoreFailure:
+          type: boolean
+        contextFields:
+          type: array
+          items:
+            type: string
+    search_relevance._common___PutPairwiseExperimentRequest:
+      type: object
+      description: The schema for a pairwise experiment.
+      properties:
+        querySetId:
+          type: string
+        searchConfigurationList:
+          type: array
+          items:
+            type: string
+        size:
+          type: integer
+        type:
+          type: string
+    search_relevance._common___PutPointwiseExperimentRequest:
+      type: object
+      description: The schema for a pointwise experiment.
+      properties:
+        querySetId:
+          type: string
+        searchConfigurationList:
+          type: array
+          items:
+            type: string
+        judgmentList:
+          type: array
+          items:
+            type: string
+        size:
+          type: integer
+        type:
+          type: string
+    search_relevance._common___PutQuerySetsRequest:
+      type: object
+      description: The schema for updating a query set.
+      properties:
         name:
           type: string
         description:
           type: string
         sampling:
           type: string
-        timestamp:
-          type: string
         querySetQueries:
-          type: object
-    search_relevance._common___SearchConfiguration:
+          type: array
+          items:
+            type: object
+    search_relevance._common___PutQuerySetsResponse:
       type: object
       properties:
-        id:
+        query_set_id:
           type: string
+        query_set_result:
+          type: string
+    search_relevance._common___PutSearchConfigurationRequest:
+      type: object
+      properties:
         name:
-          type: string
-        timestamp:
           type: string
         index:
           type: string
@@ -68755,6 +68940,27 @@ components:
           type: string
         searchPipeline:
           type: string
+    search_relevance._common___PutSearchConfigurationResponse:
+      type: object
+      properties:
+        search_configuration_id:
+          type: string
+        search_configuration_result:
+          type: string
+    search_relevance._common___PutUBIJudgmentsRequest:
+      type: object
+      description: The schema for a UBI judgment.
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        clickModel:
+          type: string
+        maxRank:
+          type: integer
     security_analytics.alerts___ActionExecutionResult:
       type: object
       properties:
