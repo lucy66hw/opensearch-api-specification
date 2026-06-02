@@ -200,7 +200,10 @@ paths:
     post:
       operationId: indices.put_alias.3
       x-operation-group: indices.put_alias
+      deprecated: true
+      x-deprecation-message: Use the singular `_alias` form. The plural `_aliases` is retained as a back-compat alias and is structurally equivalent.
       x-version-added: '1.0'
+      x-version-deprecated: '1.0'
       description: Creates or updates an alias.
       externalDocs:
         url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
@@ -222,7 +225,10 @@ paths:
     put:
       operationId: indices.put_alias.4
       x-operation-group: indices.put_alias
+      deprecated: true
+      x-deprecation-message: Use the singular `_alias` form. The plural `_aliases` is retained as a back-compat alias and is structurally equivalent.
       x-version-added: '1.0'
+      x-version-deprecated: '1.0'
       description: Creates or updates an alias.
       externalDocs:
         url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
@@ -8086,6 +8092,39 @@ paths:
         - $ref: '#/components/parameters/_global___query.error_trace'
         - $ref: '#/components/parameters/_global___query.source'
         - $ref: '#/components/parameters/_global___query.filter_path'
+  /_plugins/_search_relevance/experiments/_search:
+    get:
+      operationId: search_relevance.experiments_search.0
+      x-operation-group: search_relevance.experiments_search
+      x-version-added: '3.5'
+      description: Searches for experiments.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.experiments_search'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.experiments_search___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    post:
+      operationId: search_relevance.experiments_search.1
+      x-operation-group: search_relevance.experiments_search
+      x-version-added: '3.5'
+      description: Searches for experiments.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.experiments_search'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.experiments_search___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
   /_plugins/_search_relevance/experiments/{experiment_id}:
     delete:
       operationId: search_relevance.delete_experiments.0
@@ -8211,6 +8250,39 @@ paths:
         - $ref: '#/components/parameters/_global___query.error_trace'
         - $ref: '#/components/parameters/_global___query.source'
         - $ref: '#/components/parameters/_global___query.filter_path'
+  /_plugins/_search_relevance/judgments/_search:
+    get:
+      operationId: search_relevance.judgments_search.0
+      x-operation-group: search_relevance.judgments_search
+      x-version-added: '3.5'
+      description: Searches for judgments.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.judgments_search'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.judgments_search___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    post:
+      operationId: search_relevance.judgments_search.1
+      x-operation-group: search_relevance.judgments_search
+      x-version-added: '3.5'
+      description: Searches for judgments.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.judgments_search'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.judgments_search___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
   /_plugins/_search_relevance/judgments/{judgment_id}:
     delete:
       operationId: search_relevance.delete_judgments.0
@@ -8289,6 +8361,39 @@ paths:
         - $ref: '#/components/parameters/_global___query.error_trace'
         - $ref: '#/components/parameters/_global___query.source'
         - $ref: '#/components/parameters/_global___query.filter_path'
+  /_plugins/_search_relevance/query_sets/_search:
+    get:
+      operationId: search_relevance.query_sets_search.0
+      x-operation-group: search_relevance.query_sets_search
+      x-version-added: '3.5'
+      description: Searches for queries in the query sets.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.query_sets_search'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.query_sets_search___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    post:
+      operationId: search_relevance.query_sets_search.1
+      x-operation-group: search_relevance.query_sets_search
+      x-version-added: '3.5'
+      description: Searches for queries in the query sets.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.query_sets_search'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.query_sets_search___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
   /_plugins/_search_relevance/query_sets/{query_set_id}:
     delete:
       operationId: search_relevance.delete_query_sets.0
@@ -8345,6 +8450,39 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/search_relevance.put_search_configurations___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+  /_plugins/_search_relevance/search_configurations/_search:
+    get:
+      operationId: search_relevance.search_configurations_search.0
+      x-operation-group: search_relevance.search_configurations_search
+      x-version-added: '3.5'
+      description: Searches for search configurations.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.search_configurations_search'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.search_configurations_search___200'
+      parameters:
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+    post:
+      operationId: search_relevance.search_configurations_search.1
+      x-operation-group: search_relevance.search_configurations_search
+      x-version-added: '3.5'
+      description: Searches for search configurations.
+      requestBody:
+        $ref: '#/components/requestBodies/search_relevance.search_configurations_search'
+      responses:
+        '200':
+          $ref: '#/components/responses/search_relevance.search_configurations_search___200'
       parameters:
         - $ref: '#/components/parameters/_global___query.pretty'
         - $ref: '#/components/parameters/_global___query.human'
@@ -13140,7 +13278,10 @@ paths:
     put:
       operationId: indices.put_alias.8
       x-operation-group: indices.put_alias
+      deprecated: true
+      x-deprecation-message: Use the singular `_alias` form. The plural `_aliases` is retained as a back-compat alias and is structurally equivalent.
       x-version-added: '1.0'
+      x-version-deprecated: '1.0'
       description: Creates or updates an alias.
       externalDocs:
         url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
@@ -13163,7 +13304,10 @@ paths:
     delete:
       operationId: indices.delete_alias.1
       x-operation-group: indices.delete_alias
+      deprecated: true
+      x-deprecation-message: Use the singular `_alias` form. The plural `_aliases` is retained as a back-compat alias and is structurally equivalent.
       x-version-added: '1.0'
+      x-version-deprecated: '1.0'
       description: Deletes an alias.
       externalDocs:
         url: https://opensearch.org/docs/latest/im-plugin/index-alias/#delete-aliases
@@ -13184,7 +13328,10 @@ paths:
     post:
       operationId: indices.put_alias.9
       x-operation-group: indices.put_alias
+      deprecated: true
+      x-deprecation-message: Use the singular `_alias` form. The plural `_aliases` is retained as a back-compat alias and is structurally equivalent.
       x-version-added: '1.0'
+      x-version-deprecated: '1.0'
       description: Creates or updates an alias.
       externalDocs:
         url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
@@ -13207,7 +13354,10 @@ paths:
     put:
       operationId: indices.put_alias.10
       x-operation-group: indices.put_alias
+      deprecated: true
+      x-deprecation-message: Use the singular `_alias` form. The plural `_aliases` is retained as a back-compat alias and is structurally equivalent.
       x-version-added: '1.0'
+      x-version-deprecated: '1.0'
       description: Creates or updates an alias.
       externalDocs:
         url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
@@ -20942,6 +21092,7 @@ components:
     create_pit___query.keep_alive:
       name: keep_alive
       in: query
+      required: true
       description: Specify the keep alive for point in time.
       schema:
         $ref: '#/components/schemas/_common___Duration'
@@ -25056,27 +25207,27 @@ components:
       in: path
       required: true
       schema:
-        $ref: '#/components/schemas/_common___IndexName'
+        $ref: '#/components/schemas/_common___Indices'
       style: simple
     ism.add_policy___query.index:
       name: index
       in: query
       required: true
       schema:
-        $ref: '#/components/schemas/_common___IndexName'
+        $ref: '#/components/schemas/_common___Indices'
     ism.change_policy___path.index:
       name: index
       in: path
       required: true
       schema:
-        $ref: '#/components/schemas/_common___IndexName'
+        $ref: '#/components/schemas/_common___Indices'
       style: simple
     ism.change_policy___query.index:
       name: index
       in: query
       required: true
       schema:
-        $ref: '#/components/schemas/_common___IndexName'
+        $ref: '#/components/schemas/_common___Indices'
     ism.delete_policy___path.policy_id:
       name: policy_id
       in: path
@@ -25094,7 +25245,7 @@ components:
       in: path
       required: true
       schema:
-        $ref: '#/components/schemas/_common___IndexName'
+        $ref: '#/components/schemas/_common___Indices'
       style: simple
     ism.get_policy___path.policy_id:
       name: policy_id
@@ -25148,34 +25299,34 @@ components:
       in: path
       required: true
       schema:
-        $ref: '#/components/schemas/_common___IndexName'
+        $ref: '#/components/schemas/_common___Indices'
       style: simple
     ism.remove_policy___path.index:
       name: index
       in: path
       required: true
       schema:
-        $ref: '#/components/schemas/_common___IndexName'
+        $ref: '#/components/schemas/_common___Indices'
       style: simple
     ism.remove_policy___query.index:
       name: index
       in: query
       required: true
       schema:
-        $ref: '#/components/schemas/_common___IndexName'
+        $ref: '#/components/schemas/_common___Indices'
     ism.retry_index___path.index:
       name: index
       in: path
       required: true
       schema:
-        $ref: '#/components/schemas/_common___IndexName'
+        $ref: '#/components/schemas/_common___Indices'
       style: simple
     ism.retry_index___query.index:
       name: index
       in: query
       required: true
       schema:
-        $ref: '#/components/schemas/_common___IndexName'
+        $ref: '#/components/schemas/_common___Indices'
     knn.delete_model___path.model_id:
       name: model_id
       in: path
@@ -32893,6 +33044,16 @@ components:
           schema:
             $ref: '#/components/schemas/search_pipeline._common___SearchPipelineStructure'
       required: true
+    search_relevance.experiments_search:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/search_relevance._common___SearchRequest'
+    search_relevance.judgments_search:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/search_relevance._common___SearchRequest'
     search_relevance.post_query_sets:
       content:
         application/json:
@@ -32929,6 +33090,16 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/search_relevance._common___PutSearchConfigurationRequest'
+    search_relevance.query_sets_search:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/search_relevance._common___SearchRequest'
+    search_relevance.search_configurations_search:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/search_relevance._common___SearchRequest'
     search_shards:
       content:
         application/json:
@@ -37150,6 +37321,12 @@ components:
           schema:
             $ref: '#/components/schemas/_common___WriteResponseBase'
       description: ''
+    search_relevance.experiments_search___200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_core.search___SearchResult'
+      description: ''
     search_relevance.get_experiments___200:
       content:
         application/json:
@@ -37218,6 +37395,12 @@ components:
                 required:
                   - nodes
       description: ''
+    search_relevance.judgments_search___200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_core.search___SearchResult'
+      description: ''
     search_relevance.post_query_sets___200:
       content:
         application/json:
@@ -37253,6 +37436,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/search_relevance._common___PutSearchConfigurationResponse'
+      description: ''
+    search_relevance.query_sets_search___200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_core.search___SearchResult'
+      description: ''
+    search_relevance.search_configurations_search___200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_core.search___SearchResult'
       description: ''
     search_shards___200:
       content:
@@ -52082,6 +52277,7 @@ components:
               format: float
       required:
         - hits
+        - max_score
     _core.search___HitsMetadataJsonValue:
       allOf:
         - $ref: '#/components/schemas/_core.search___HitsMetadata'
@@ -61171,9 +61367,12 @@ components:
           type: boolean
           description: Indicates if the pause request has been acknowledged by individual shards.
         failures:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion._common___IngestionStateShardFailure'
+          type: object
+          description: Shard-level failures grouped by index name.
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ingestion._common___IngestionStateShardFailure'
         error:
           type: string
       required:
@@ -61226,9 +61425,12 @@ components:
           type: boolean
           description: Indicates if the resume request has been acknowledged by individual shards.
         failures:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion._common___IngestionStateShardFailure'
+          type: object
+          description: Shard-level failures grouped by index name.
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ingestion._common___IngestionStateShardFailure'
         error:
           type: string
       required:
@@ -69044,6 +69246,9 @@ components:
           type: string
         index:
           type: string
+        description:
+          type: string
+          x-version-added: '3.5'
         query:
           type: string
         searchPipeline:
@@ -69069,6 +69274,23 @@ components:
           type: string
         maxRank:
           type: integer
+    search_relevance._common___SearchRequest:
+      type: object
+      description: A search request body delegated to SearchSourceBuilder.
+      properties:
+        query:
+          $ref: '#/components/schemas/_common.query_dsl___QueryContainer'
+        size:
+          type: integer
+          format: int32
+          description: The maximum number of results to return.
+        from:
+          type: integer
+          format: int32
+          description: The starting offset for the results.
+        sort:
+          $ref: '#/components/schemas/_common___Sort'
+          description: The sort order.
     security_analytics.alerts___ActionExecutionResult:
       type: object
       properties:
