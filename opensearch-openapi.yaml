@@ -34378,6 +34378,7 @@ components:
       content:
         application/json:
           schema:
+            title: DeletePITResponse
             type: object
             properties:
               pits:
@@ -51239,10 +51240,13 @@ components:
     _core.pit___DeletedPit:
       type: object
       properties:
-        successful:
-          type: boolean
         pit_id:
           type: string
+        successful:
+          type: boolean
+      required:
+        - pit_id
+        - successful
     _core.pit___PitDetail:
       type: object
       properties:
