@@ -50466,12 +50466,29 @@ components:
           $ref: '#/components/schemas/_common___Field'
         routing:
           $ref: '#/components/schemas/_common___Routing'
+        query:
+          $ref: '#/components/schemas/_common.query_dsl___QueryContainer'
+          x-version-added: 3.2.0
         store:
           type: boolean
       required:
-        - id
         - index
         - path
+      allOf:
+        - oneOf:
+            - type: object
+              properties:
+                id:
+                  $ref: '#/components/schemas/_common___Id'
+              required:
+                - id
+            - type: object
+              properties:
+                query:
+                  $ref: '#/components/schemas/_common.query_dsl___QueryContainer'
+              required:
+                - query
+              x-version-added: 3.2.0
     _common.query_dsl___TermsQuery:
       type: object
       properties:
@@ -59071,6 +59088,20 @@ components:
         all_active:
           description: Indicates if all-active ingestion is enabled for this index.
           $ref: '#/components/schemas/_common___StringifiedBoolean'
+        mapper_type:
+          description: The type of message mapper used to extract document fields from ingestion messages.
+          $ref: '#/components/schemas/indices._common___IngestionSourceMapperType'
+        mapper_settings:
+          type: object
+          description: Configuration settings for the selected mapper type.
+          additionalProperties: true
+    indices._common___IngestionSourceMapperType:
+      type: string
+      description: The type of message mapper used to extract document fields from ingestion messages.
+      enum:
+        - default
+        - field_mapping
+        - raw_payload
     indices._common___IngestionSourcePointer:
       type: object
       properties:
