@@ -1440,7 +1440,7 @@ paths:
       x-version-added: '1.0'
       description: Recommissions a decommissioned zone.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/cluster-api/cluster-decommission/#example-decommissioning-and-recommissioning-a-zone
+        url: https://docs.opensearch.org/latest/api-reference/cluster-api/cluster-decommission/#decommissioning-and-recommissioning-a-zone
       responses:
         '200':
           $ref: '#/components/responses/cluster.delete_decommission_awareness___200'
@@ -1457,7 +1457,7 @@ paths:
       x-version-added: '1.0'
       description: Retrieves the decommission status for all zones.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/cluster-api/cluster-decommission/#example-getting-zone-decommission-status
+        url: https://docs.opensearch.org/latest/api-reference/cluster-api/cluster-decommission/#getting-zone-decommission-status
       parameters:
         - $ref: '#/components/parameters/cluster.get_decommission_awareness___path.awareness_attribute_name'
         - $ref: '#/components/parameters/_global___query.pretty'
@@ -1475,7 +1475,7 @@ paths:
       x-version-added: '1.0'
       description: Decommissions a cluster zone based on awareness. This can greatly benefit multi-zone deployments, where awareness attributes can aid in applying new upgrades to a cluster in a controlled fashion.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/cluster-api/cluster-decommission/#example-decommissioning-and-recommissioning-a-zone
+        url: https://docs.opensearch.org/latest/api-reference/cluster-api/cluster-decommission/#decommissioning-and-recommissioning-a-zone
       parameters:
         - $ref: '#/components/parameters/cluster.put_decommission_awareness___path.awareness_attribute_name'
         - $ref: '#/components/parameters/cluster.put_decommission_awareness___path.awareness_attribute_value'
@@ -1658,7 +1658,7 @@ paths:
       x-version-added: '1.0'
       description: Fetches weighted shard routing weights.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/cluster-api/cluster-awareness/#example-getting-weights-for-all-zones
+        url: https://docs.opensearch.org/latest/api-reference/cluster-api/cluster-awareness/#example-request-viewing-the-configuration
       parameters:
         - $ref: '#/components/parameters/cluster.get_weighted_routing___path.attribute'
         - $ref: '#/components/parameters/_global___query.pretty'
@@ -1675,7 +1675,7 @@ paths:
       x-version-added: '1.0'
       description: Updates weighted shard routing weights.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/cluster-api/cluster-awareness/#example-weighted-round-robin-search
+        url: https://docs.opensearch.org/latest/api-reference/cluster-api/cluster-awareness/#example-request-updating-the-configuration
       parameters:
         - $ref: '#/components/parameters/cluster.put_weighted_routing___path.attribute'
         - $ref: '#/components/parameters/_global___query.pretty'
@@ -1695,7 +1695,7 @@ paths:
       x-version-added: '1.0'
       description: Delete weighted shard routing weights.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/cluster-api/cluster-awareness/#example-deleting-weights
+        url: https://docs.opensearch.org/latest/api-reference/cluster-api/cluster-awareness/#example-request-deleting-the-configuration
       requestBody:
         $ref: '#/components/requestBodies/cluster.delete_weighted_routing'
       responses:
@@ -2337,7 +2337,7 @@ paths:
       x-version-added: '1.0'
       description: Returns the information about the capabilities of fields among multiple indexes.
       externalDocs:
-        url: https://opensearch.org/docs/latest/field-types/supported-field-types/alias/#using-aliases-in-field-capabilities-api-operations
+        url: https://docs.opensearch.org/latest/mappings/supported-field-types/alias/#using-aliases-in-field-capabilities-api-operations
       parameters:
         - $ref: '#/components/parameters/field_caps___query.allow_no_indices'
         - $ref: '#/components/parameters/field_caps___query.expand_wildcards'
@@ -2360,7 +2360,7 @@ paths:
       x-version-added: '1.0'
       description: Returns the information about the capabilities of fields among multiple indexes.
       externalDocs:
-        url: https://opensearch.org/docs/latest/field-types/supported-field-types/alias/#using-aliases-in-field-capabilities-api-operations
+        url: https://docs.opensearch.org/latest/mappings/supported-field-types/alias/#using-aliases-in-field-capabilities-api-operations
       parameters:
         - $ref: '#/components/parameters/field_caps___query.allow_no_indices'
         - $ref: '#/components/parameters/field_caps___query.expand_wildcards'
@@ -3848,7 +3848,7 @@ paths:
       x-version-added: '1.0'
       description: Returns mappings for one or more indexes.
       externalDocs:
-        url: https://opensearch.org/docs/latest/field-types/index/#get-a-mapping
+        url: https://docs.opensearch.org/latest/api-reference/index-apis/get-mapping/
       parameters:
         - $ref: '#/components/parameters/indices.get_mapping___query.allow_no_indices'
         - $ref: '#/components/parameters/indices.get_mapping___query.cluster_manager_timeout'
@@ -5085,7 +5085,7 @@ paths:
       x-operation-group: ism.get_policy
       description: Retrieves a specific policy.
       externalDocs:
-        url: https://opensearch.org/docs/latest/im-plugin/ism/api/#put-policy
+        url: https://docs.opensearch.org/latest/im-plugin/ism/api/#get-policy
       parameters:
         - $ref: '#/components/parameters/ism.get_policy___path.policy_id'
         - $ref: '#/components/parameters/_global___query.pretty'
@@ -5142,7 +5142,7 @@ paths:
       x-operation-group: ism.remove_policy
       description: Removes a policy from an index.
       externalDocs:
-        url: https://opensearch.org/docs/latest/im-plugin/ism/api/#remove-policy
+        url: https://docs.opensearch.org/latest/im-plugin/ism/api/#remove-policy-from-index
       parameters:
         - $ref: '#/components/parameters/ism.remove_policy___query.index'
         - $ref: '#/components/parameters/_global___query.pretty'
@@ -5159,7 +5159,7 @@ paths:
       x-operation-group: ism.remove_policy
       description: Removes a policy from an index.
       externalDocs:
-        url: https://opensearch.org/docs/latest/im-plugin/ism/api/#remove-policy
+        url: https://docs.opensearch.org/latest/im-plugin/ism/api/#remove-policy-from-index
       parameters:
         - $ref: '#/components/parameters/ism.remove_policy___path.index'
         - $ref: '#/components/parameters/ism.remove_policy___query.index'
@@ -11068,7 +11068,7 @@ paths:
       x-version-added: '1.0'
       description: Performs the refresh operation in one or more indexes.
       externalDocs:
-        url: https://opensearch.org/docs/latest/tuning-your-cluster/availability-and-recovery/remote-store/index/#refresh-level-and-request-level-durability
+        url: https://docs.opensearch.org/latest/api-reference/index-apis/refresh/
       parameters:
         - $ref: '#/components/parameters/indices.refresh___query.allow_no_indices'
         - $ref: '#/components/parameters/indices.refresh___query.expand_wildcards'
@@ -11087,7 +11087,7 @@ paths:
       x-version-added: '1.0'
       description: Performs the refresh operation in one or more indexes.
       externalDocs:
-        url: https://opensearch.org/docs/latest/tuning-your-cluster/availability-and-recovery/remote-store/index/#refresh-level-and-request-level-durability
+        url: https://docs.opensearch.org/latest/api-reference/index-apis/refresh/
       parameters:
         - $ref: '#/components/parameters/indices.refresh___query.allow_no_indices'
         - $ref: '#/components/parameters/indices.refresh___query.expand_wildcards'
@@ -11174,7 +11174,7 @@ paths:
       x-version-added: '1.0'
       description: Restores from remote store.
       externalDocs:
-        url: https://opensearch.org/docs/latest/opensearch/remote/#restoring-from-a-backup
+        url: https://docs.opensearch.org/latest/tuning-your-cluster/availability-and-recovery/remote-store/index/#restoring-from-a-backup
       parameters:
         - $ref: '#/components/parameters/remote_store.restore___query.cluster_manager_timeout'
         - $ref: '#/components/parameters/remote_store.restore___query.wait_for_completion'
@@ -11757,7 +11757,7 @@ paths:
       x-version-added: '2.4'
       description: Deletes one or more point in time searches based on the IDs passed.
       externalDocs:
-        url: https://opensearch.org/docs/latest/search-plugins/point-in-time-api/#delete-pits
+        url: https://docs.opensearch.org/latest/api-reference/search-apis/point-in-time-api/#delete-pits
       requestBody:
         $ref: '#/components/requestBodies/delete_pit'
       responses:
@@ -11776,7 +11776,7 @@ paths:
       x-version-added: '2.4'
       description: Deletes all active point in time searches.
       externalDocs:
-        url: https://opensearch.org/docs/latest/search-plugins/point-in-time-api/#delete-pits
+        url: https://docs.opensearch.org/latest/api-reference/search-apis/point-in-time-api/#delete-pits
       responses:
         '200':
           $ref: '#/components/responses/delete_all_pits___200'
@@ -11792,7 +11792,7 @@ paths:
       x-version-added: '2.4'
       description: Lists all active point in time searches.
       externalDocs:
-        url: https://opensearch.org/docs/latest/search-plugins/point-in-time-api/#list-all-pits
+        url: https://docs.opensearch.org/latest/api-reference/search-apis/point-in-time-api/#list-all-pits
       responses:
         '200':
           $ref: '#/components/responses/get_all_pits___200'
@@ -11829,7 +11829,7 @@ paths:
       x-version-added: '1.0'
       description: Allows to retrieve a large numbers of results from a single search request.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/scroll/#path-and-http-methods
+        url: https://docs.opensearch.org/latest/api-reference/search-apis/scroll/#endpoints
       parameters:
         - $ref: '#/components/parameters/scroll___query.rest_total_hits_as_int'
         - $ref: '#/components/parameters/scroll___query.scroll'
@@ -11850,7 +11850,7 @@ paths:
       x-version-added: '1.0'
       description: Allows to retrieve a large numbers of results from a single search request.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/scroll/#path-and-http-methods
+        url: https://docs.opensearch.org/latest/api-reference/search-apis/scroll/#endpoints
       parameters:
         - $ref: '#/components/parameters/scroll___query.rest_total_hits_as_int'
         - $ref: '#/components/parameters/scroll___query.scroll'
@@ -11899,7 +11899,7 @@ paths:
       x-version-deprecated: '1.0'
       description: Allows to retrieve a large numbers of results from a single search request.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/scroll/#path-and-http-methods
+        url: https://docs.opensearch.org/latest/api-reference/search-apis/scroll/#endpoints
       parameters:
         - $ref: '#/components/parameters/scroll___path.scroll_id'
         - $ref: '#/components/parameters/scroll___query.rest_total_hits_as_int'
@@ -11924,7 +11924,7 @@ paths:
       x-version-deprecated: '1.0'
       description: Allows to retrieve a large numbers of results from a single search request.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/scroll/#path-and-http-methods
+        url: https://docs.opensearch.org/latest/api-reference/search-apis/scroll/#endpoints
       parameters:
         - $ref: '#/components/parameters/scroll___path.scroll_id'
         - $ref: '#/components/parameters/scroll___query.rest_total_hits_as_int'
@@ -12565,7 +12565,7 @@ paths:
       x-version-added: '1.0'
       description: Cancels a task, if it can be cancelled through an API.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/tasks/#task-canceling
+        url: https://docs.opensearch.org/latest/api-reference/tasks/cancel-tasks/
       parameters:
         - $ref: '#/components/parameters/tasks.cancel___query.actions'
         - $ref: '#/components/parameters/tasks.cancel___query.nodes'
@@ -12606,7 +12606,7 @@ paths:
       x-version-added: '1.0'
       description: Cancels a task, if it can be cancelled through an API.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/tasks/#task-canceling
+        url: https://docs.opensearch.org/latest/api-reference/tasks/cancel-tasks/
       parameters:
         - $ref: '#/components/parameters/tasks.cancel___path.task_id'
         - $ref: '#/components/parameters/tasks.cancel___query.actions'
@@ -13165,7 +13165,7 @@ paths:
       x-version-added: '1.0'
       description: Deletes an alias.
       externalDocs:
-        url: https://opensearch.org/docs/latest/im-plugin/index-alias/#delete-aliases
+        url: https://docs.opensearch.org/latest/api-reference/alias/delete-alias/
       parameters:
         - $ref: '#/components/parameters/indices.delete_alias___path.index'
         - $ref: '#/components/parameters/indices.delete_alias___path.name'
@@ -13310,7 +13310,7 @@ paths:
       x-version-deprecated: '1.0'
       description: Deletes an alias.
       externalDocs:
-        url: https://opensearch.org/docs/latest/im-plugin/index-alias/#delete-aliases
+        url: https://docs.opensearch.org/latest/api-reference/alias/delete-alias/
       parameters:
         - $ref: '#/components/parameters/indices.delete_alias___path.index'
         - $ref: '#/components/parameters/indices.delete_alias___path.name'
@@ -14113,7 +14113,7 @@ paths:
       x-version-added: '1.0'
       description: Returns the information about the capabilities of fields among multiple indexes.
       externalDocs:
-        url: https://opensearch.org/docs/latest/field-types/supported-field-types/alias/#using-aliases-in-field-capabilities-api-operations
+        url: https://docs.opensearch.org/latest/mappings/supported-field-types/alias/#using-aliases-in-field-capabilities-api-operations
       parameters:
         - $ref: '#/components/parameters/field_caps___path.index'
         - $ref: '#/components/parameters/field_caps___query.allow_no_indices'
@@ -14137,7 +14137,7 @@ paths:
       x-version-added: '1.0'
       description: Returns the information about the capabilities of fields among multiple indexes.
       externalDocs:
-        url: https://opensearch.org/docs/latest/field-types/supported-field-types/alias/#using-aliases-in-field-capabilities-api-operations
+        url: https://docs.opensearch.org/latest/mappings/supported-field-types/alias/#using-aliases-in-field-capabilities-api-operations
       parameters:
         - $ref: '#/components/parameters/field_caps___path.index'
         - $ref: '#/components/parameters/field_caps___query.allow_no_indices'
@@ -14233,7 +14233,7 @@ paths:
       x-version-added: '1.0'
       description: Returns mappings for one or more indexes.
       externalDocs:
-        url: https://opensearch.org/docs/latest/field-types/index/#get-a-mapping
+        url: https://docs.opensearch.org/latest/api-reference/index-apis/get-mapping/
       parameters:
         - $ref: '#/components/parameters/indices.get_mapping___path.index'
         - $ref: '#/components/parameters/indices.get_mapping___query.allow_no_indices'
@@ -14650,7 +14650,7 @@ paths:
       x-version-added: '1.0'
       description: Performs the refresh operation in one or more indexes.
       externalDocs:
-        url: https://opensearch.org/docs/latest/tuning-your-cluster/availability-and-recovery/remote-store/index/#refresh-level-and-request-level-durability
+        url: https://docs.opensearch.org/latest/api-reference/index-apis/refresh/
       parameters:
         - $ref: '#/components/parameters/indices.refresh___path.index'
         - $ref: '#/components/parameters/indices.refresh___query.allow_no_indices'
@@ -14670,7 +14670,7 @@ paths:
       x-version-added: '1.0'
       description: Performs the refresh operation in one or more indexes.
       externalDocs:
-        url: https://opensearch.org/docs/latest/tuning-your-cluster/availability-and-recovery/remote-store/index/#refresh-level-and-request-level-durability
+        url: https://docs.opensearch.org/latest/api-reference/index-apis/refresh/
       parameters:
         - $ref: '#/components/parameters/indices.refresh___path.index'
         - $ref: '#/components/parameters/indices.refresh___query.allow_no_indices'
@@ -14885,7 +14885,7 @@ paths:
       x-version-added: '2.4'
       description: Creates point in time context.
       externalDocs:
-        url: https://opensearch.org/docs/latest/search-plugins/point-in-time-api/#create-a-pit
+        url: https://docs.opensearch.org/latest/api-reference/search-apis/point-in-time-api/#create-a-pit
       parameters:
         - $ref: '#/components/parameters/create_pit___path.index'
         - $ref: '#/components/parameters/create_pit___query.allow_no_indices'
@@ -16006,7 +16006,7 @@ paths:
       x-operation-group: ism.get_policy
       description: Retrieves a specific policy.
       externalDocs:
-        url: https://opensearch.org/docs/latest/im-plugin/ism/api/#put-policy
+        url: https://docs.opensearch.org/latest/im-plugin/ism/api/#get-policy
       parameters:
         - $ref: '#/components/parameters/ism.get_policy___path.policy_id'
         - $ref: '#/components/parameters/_global___query.pretty'
@@ -16087,7 +16087,7 @@ paths:
       x-operation-group: ism.remove_policy
       description: Removes a policy from an index.
       externalDocs:
-        url: https://opensearch.org/docs/latest/im-plugin/ism/api/#remove-policy
+        url: https://docs.opensearch.org/latest/im-plugin/ism/api/#remove-policy-from-index
       parameters:
         - $ref: '#/components/parameters/ism.remove_policy___query.index'
         - $ref: '#/components/parameters/_global___query.pretty'
@@ -16106,7 +16106,7 @@ paths:
       x-operation-group: ism.remove_policy
       description: Removes a policy from an index.
       externalDocs:
-        url: https://opensearch.org/docs/latest/im-plugin/ism/api/#remove-policy
+        url: https://docs.opensearch.org/latest/im-plugin/ism/api/#remove-policy-from-index
       parameters:
         - $ref: '#/components/parameters/ism.remove_policy___path.index'
         - $ref: '#/components/parameters/ism.remove_policy___query.index'
@@ -40068,6 +40068,19 @@ components:
           const: cluster_manager
           description: The node can act as a cluster manager.
           x-version-added: '2.0'
+        - type: string
+          const: search
+          description: The node was dedicated to provide search capability for searchable snapshots. Renamed to `warm` in 3.0.
+          x-version-added: '2.4'
+          x-version-removed: '3.0'
+        - type: string
+          const: search
+          description: The node can host search replicas (search-only shards). This role must not be combined with any other role on a node. Introduced in 3.0; not to be confused with the pre-3.0 `search` role that was renamed to `warm`.
+          x-version-added: '3.0'
+        - type: string
+          const: warm
+          description: The node can hold warm indexes for searchable snapshots. Before 3.0 this role was named `search`.
+          x-version-added: '3.0'
     _common___NodeRoles:
       description: The role assigned to the node.
       type: array
@@ -49881,6 +49894,8 @@ components:
           $ref: '#/components/schemas/_common.query_dsl___ScriptScoreQuery'
         simple_query_string:
           $ref: '#/components/schemas/_common.query_dsl___SimpleQueryStringQuery'
+        sltr:
+          $ref: '#/components/schemas/_common.query_dsl___StoredLtrQuery'
         span_containing:
           $ref: '#/components/schemas/_common.query_dsl___SpanContainingQuery'
         field_masking_span:
@@ -50438,6 +50453,31 @@ components:
           required:
             - big
             - little
+    _common.query_dsl___StoredLtrQuery:
+      type: object
+      properties:
+        _name:
+          type: string
+        active_features:
+          type: array
+          items:
+            type: string
+        boost:
+          type: number
+          format: float
+        cache:
+          type: boolean
+        featureset:
+          type: string
+        model:
+          type: string
+        params:
+          type: object
+          additionalProperties: true
+        store:
+          type: string
+      required:
+        - params
     _common.query_dsl___TermQuery:
       oneOf:
         - title: value
@@ -57660,7 +57700,7 @@ components:
         - $ref: '#/components/schemas/geospatial._common___Envelope'
       description: |-
         GeoJSON `geoshape` types supported by OpenSearch.
-        For more details, see: https://docs.opensearch.org/docs/latest/field-types/supported-field-types/geo-shape.
+        For more details, see: <https://docs.opensearch.org/latest/mappings/supported-field-types/geo-shape>.
     geospatial._common___GeospatialFieldType:
       type: string
       enum:
